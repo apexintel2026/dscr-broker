@@ -5,6 +5,8 @@ import { cn } from "@/lib/cn";
 const variants = {
   primary:
     "bg-accent text-accent-ink hover:bg-[#4ae6a4] active:bg-[#32c886]",
+  urgent:
+    "bg-danger text-accent-ink hover:bg-[#f88b83] active:bg-[#e45c52]",
   secondary:
     "border border-border bg-elevated text-ink hover:border-muted hover:bg-[#20293a]",
   ghost: "text-ink hover:bg-elevated",

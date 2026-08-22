@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { CallMeNow } from "@/components/CallMeNow";
 import { navLinks } from "@/lib/site";
 
 export function MobileNav() {
@@ -43,6 +44,9 @@ export function MobileNav() {
           className="absolute inset-x-0 top-full border-b border-border bg-surface"
         >
           <nav aria-label="Mobile" className="flex flex-col px-4 py-3">
+            <div className="border-b border-border py-3">
+              <CallMeNow />
+            </div>
             {navLinks.map((link) => (
               <Link
                 key={link.href}

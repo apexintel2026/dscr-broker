@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { CallMeNow } from "@/components/CallMeNow";
 import { MobileNav } from "@/components/MobileNav";
 import { PhoneLinks } from "@/components/PhoneLinks";
 import { navLinks, site } from "@/lib/site";
@@ -27,6 +28,7 @@ export function Header() {
           aria-label="Primary"
           className="hidden items-center gap-6 md:flex"
         >
+          <CallMeNow showHint={false} />
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -39,6 +41,9 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <span className="md:hidden">
+            <CallMeNow showHint={false} />
+          </span>
           <Button
             href="/book"
             className="hidden sm:inline-flex"

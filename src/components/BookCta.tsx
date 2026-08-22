@@ -1,4 +1,3 @@
-import { CallMeNow } from "@/components/CallMeNow";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Container } from "@/components/ui/Container";
@@ -21,10 +20,9 @@ export function BookCta({
               </h2>
               <p className="text-sm text-muted sm:text-base">{body}</p>
             </div>
-            <div className="flex shrink-0 flex-col gap-3 sm:items-end">
-              <Button href="/book">Book a 30-min call</Button>
-              <CallMeNow />
-            </div>
+            <Button href="/book" className="shrink-0">
+              Book a 30-min call
+            </Button>
           </div>
         </Card>
       </Container>
