@@ -33,11 +33,11 @@ export default function WhatIsDscrPage() {
           Working definition
         </p>
         <p className="mt-3 font-mono text-lg text-ink">
-          DSCR = qualifying income ÷ PITIA
+          Lender DSCR = Gross Monthly Rent ÷ Monthly PITIA
         </p>
         <p className="mt-2 text-sm text-muted">
-          Phase 2 will compute this on /calculator. The formula is shown here
-          as orientation, not a live engine.
+          The live calculator on /calculator uses this formula. Investor cash
+          flow is a separate, labeled view.
         </p>
       </Card>
       <Prose>

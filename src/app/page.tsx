@@ -47,7 +47,7 @@ export default function HomePage() {
               DSCR
             </p>
             <p className="mt-1 font-mono text-sm text-muted">
-              Phase 2 runs the math. Today is the path.
+              Live DSCR on /calculator. Rent ÷ PITIA.
             </p>
             <dl className="mt-6 space-y-3 border-t border-border pt-6 text-sm">
               <div className="flex justify-between gap-4">
@@ -76,9 +76,8 @@ export default function HomePage() {
                 Run the deal before you book the hour.
               </h2>
               <p className="max-w-2xl text-muted">
-                Phase 2 ships DSCR math, a desk-ready snapshot, and a shareable
-                report. The route and layout are live now so the path is
-                obvious.
+                Ungated. Lender DSCR is rent ÷ PITIA. Investor cash flow is
+                labeled separately. Share a report URL, then book the call.
               </p>
             </div>
             <Button href="/calculator" variant="secondary">

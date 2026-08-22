@@ -28,7 +28,7 @@ const faqs = [
   },
   {
     q: "Does the calculator decide anything?",
-    a: "Phase 1 is a shell. Phase 2 will compute DSCR for orientation. It will not be a credit decision.",
+    a: "No. It computes lender DSCR (rent ÷ PITIA) and an investor cash-flow view for orientation. It is not a credit decision, a lock, or a quote.",
   },
   {
     q: "Do you publish rates here?",
