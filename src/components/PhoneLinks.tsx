@@ -22,12 +22,14 @@ export function PhoneLinks({
       <a
         href={`tel:${site.phoneHref}`}
         className="font-mono tracking-tight text-ink transition-colors duration-150 hover:text-accent"
+        aria-label={`Call ${site.phoneDisplay}`}
       >
         {site.phoneDisplay}
       </a>
       <a
         href={`sms:${site.phoneHref}`}
         className="text-accent transition-colors duration-150 hover:underline"
+        aria-label={`Text ${site.phoneDisplay}`}
       >
         Text
       </a>
