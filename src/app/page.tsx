@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BookCta } from "@/components/BookCta";
+import { CallMeNow } from "@/components/CallMeNow";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
@@ -27,11 +28,12 @@ export default function HomePage() {
               DSCR and business-purpose financing for investors. We desk the
               file and broker it to capital sources. We are not the lender.
             </p>
-            <div className="flex flex-col gap-3 sm:flex-row">
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-start">
               <Button href="/book">Book a 30-min call</Button>
               <Button href="/calculator" variant="secondary">
                 Open the calculator
               </Button>
+              <CallMeNow />
             </div>
             <p className="text-xs text-muted">
               Non-owner-occupied / business-purpose only. Not a commitment to

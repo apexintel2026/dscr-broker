@@ -1,3 +1,4 @@
+import { CallMeNow } from "@/components/CallMeNow";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
@@ -66,9 +67,12 @@ export function DealSummary({
         </div>
         <p className="mt-4 text-sm text-muted">{guidanceForBand(band)}</p>
         {showCta ? (
-          <Button href="/book" className="mt-5 w-full sm:w-auto">
-            Book a free 30-min strategy call
-          </Button>
+          <div className="mt-5 flex flex-col gap-4 sm:flex-row sm:items-start">
+            <Button href="/book" className="w-full sm:w-auto">
+              Book a free 30-min strategy call
+            </Button>
+            <CallMeNow fullWidth />
+          </div>
         ) : null}
       </Card>
 
