@@ -12,6 +12,8 @@ export const site = {
     "DSCR and business-purpose investor loans, brokered — not funded in-house. Qualify the deal, then book a 30-minute strategy call.",
   url: "https://dscr.broker",
   email: "desk@dscr.broker",
+  phoneDisplay: "619-618-1419",
+  phoneHref: "+16196181419",
   bookingMinutes: 30,
   bookingWidgetUrl:
     process.env.NEXT_PUBLIC_GHL_BOOKING_URL || DEFAULT_GHL_BOOKING_URL,

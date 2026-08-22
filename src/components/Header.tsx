@@ -2,11 +2,17 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { MobileNav } from "@/components/MobileNav";
+import { PhoneLinks } from "@/components/PhoneLinks";
 import { navLinks, site } from "@/lib/site";
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-page/90 backdrop-blur-md">
+    <header className="relative sticky top-0 z-40 border-b border-border bg-page/90 backdrop-blur-md">
+      <div className="border-b border-border bg-surface/90">
+        <Container className="flex min-h-9 items-center justify-center py-1.5">
+          <PhoneLinks />
+        </Container>
+      </div>
       <Container className="flex h-16 items-center justify-between gap-4">
         <Link href="/" className="min-w-0 shrink">
           <span className="block truncate font-medium tracking-tight text-ink">
