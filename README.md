@@ -4,7 +4,15 @@ Marketing site for **dscr.broker** — a DSCR / business-purpose investor-loan *
 
 Domain later: `dscr.broker` on Vercel. This repo does not require the custom domain to resolve.
 
-## Phase 2 (this build)
+## Phase 3 (this build)
+
+Live HighLevel booking widget on `/book`.
+
+- Widget URL: `https://api.leadconnectorhq.com/widget/bookings/investor-strategy-call-gr4odyuguyt`
+- Override with `NEXT_PUBLIC_GHL_BOOKING_URL` if the calendar slug changes
+- `/thank-you` remains the site contact-form confirmation (HighLevel may redirect after book; we do not control that)
+
+## Phase 2
 
 Live ungated single-property DSCR calculator.
 
@@ -38,6 +46,7 @@ Copy `.env.example` to `.env.local` if you want a webhook.
 | --- | --- | --- |
 | `HIGHLEVEL_WEBHOOK_URL` | No | If unset, `/api/leads` logs the flattened payload and still succeeds. Phase 5 wires the live URL. |
 | `NEXT_PUBLIC_SITE_URL` | No | Absolute origin for `report_url` in the payload. Falls back to `https://dscr.broker`. |
+| `NEXT_PUBLIC_GHL_BOOKING_URL` | No | HighLevel booking iframe on `/book`. Defaults to the investor strategy-call widget. |
 
 ## Webhook payload (Phase 0 schema)
 
@@ -105,7 +114,7 @@ Flattened JSON, no arrays. `POST` to `HIGHLEVEL_WEBHOOK_URL`.
 | `/how-it-works` | Process |
 | `/resources` | Hub + articles |
 | `/about` | Desk positioning |
-| `/book` | HighLevel calendar embed slot (Phase 3) |
+| `/book` | Live HighLevel 30-minute strategy-call calendar |
 | `/contact` | Placeholder form → `/thank-you` |
 | `/privacy` `/terms` | Placeholders |
 

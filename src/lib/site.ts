@@ -1,3 +1,6 @@
+export const DEFAULT_GHL_BOOKING_URL =
+  "https://api.leadconnectorhq.com/widget/bookings/investor-strategy-call-gr4odyuguyt";
+
 export const site = {
   name: "dscr.broker",
   tagline: "Qualify the deal. Book the call.",
@@ -7,6 +10,8 @@ export const site = {
   url: "https://dscr.broker",
   email: "desk@dscr.broker",
   bookingMinutes: 30,
+  bookingWidgetUrl:
+    process.env.NEXT_PUBLIC_GHL_BOOKING_URL || DEFAULT_GHL_BOOKING_URL,
 } as const;
 
 export const navLinks = [

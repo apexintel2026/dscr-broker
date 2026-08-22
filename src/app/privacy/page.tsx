@@ -21,8 +21,9 @@ export default function PrivacyPage() {
       <Container className="max-w-3xl space-y-6 py-12 text-sm leading-7 text-muted">
         <p>
           {site.name} is a marketing site for a mortgage broker / investor
-          loan desk. Phase 1 does not run analytics pixels, does not store
-          form submissions, and does not embed a live calendar.
+          loan desk. /book embeds a HighLevel scheduling widget. Calculator
+          lead notes are sent only if you submit the optional form. We do
+          not run analytics pixels in this build.
         </p>
         <p>
           When intake and scheduling go live, this page will describe what we
