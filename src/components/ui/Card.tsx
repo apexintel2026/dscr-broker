@@ -1,3 +1,5 @@
+import { cn } from "@/lib/cn";
+
 export function Card({
   children,
   className = "",
@@ -9,9 +11,11 @@ export function Card({
 }) {
   return (
     <div
-      className={`rounded-card border border-border ${
-        elevated ? "bg-elevated" : "bg-surface"
-      } ${className}`}
+      className={cn(
+        "rounded-card border border-border",
+        elevated ? "bg-elevated" : "bg-surface",
+        className,
+      )}
     >
       {children}
     </div>

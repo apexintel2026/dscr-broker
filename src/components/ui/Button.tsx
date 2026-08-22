@@ -1,5 +1,6 @@
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 import Link from "next/link";
+import { cn } from "@/lib/cn";
 
 const variants = {
   primary:
@@ -35,7 +36,7 @@ export function Button({
   children,
   ...props
 }: ButtonAsButton | ButtonAsLink) {
-  const classes = `${base} ${variants[variant]} ${className}`;
+  const classes = cn(base, variants[variant], className);
 
   if ("href" in props && props.href) {
     const { href, ...rest } = props;

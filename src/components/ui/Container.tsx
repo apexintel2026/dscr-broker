@@ -1,3 +1,5 @@
+import { cn } from "@/lib/cn";
+
 export function Container({
   children,
   className = "",
@@ -5,10 +7,10 @@ export function Container({
 }: {
   children: React.ReactNode;
   className?: string;
-  as?: "div" | "section" | "header" | "footer" | "main" | "nav";
+  as?: "div" | "section" | "header" | "footer" | "main" | "nav" | "article";
 }) {
   return (
-    <Tag className={`mx-auto w-full max-w-6xl px-4 sm:px-6 ${className}`}>
+    <Tag className={cn("mx-auto w-full max-w-6xl px-4 sm:px-6", className)}>
       {children}
     </Tag>
   );
