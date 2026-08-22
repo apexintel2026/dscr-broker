@@ -105,7 +105,7 @@ export function CalculatorWorksheet() {
           <Field label="Purchase price / value">
             <input
               inputMode="decimal"
-              placeholder="400000"
+              placeholder="e.g. 400000"
               value={form.purchasePrice}
               onChange={(event) => setField("purchasePrice", event.target.value)}
               className={fieldInputClass}
@@ -126,7 +126,7 @@ export function CalculatorWorksheet() {
             >
               <input
                 inputMode="decimal"
-                placeholder={downPaymentMode === "percent" ? "25" : "100000"}
+                placeholder={downPaymentMode === "percent" ? "e.g. 25" : "e.g. 100000"}
                 value={form.downPaymentValue}
                 onChange={(event) =>
                   setField("downPaymentValue", event.target.value)
@@ -149,7 +149,7 @@ export function CalculatorWorksheet() {
           >
             <input
               inputMode="decimal"
-              placeholder="3200"
+              placeholder="e.g. 3200"
               value={form.monthlyGrossRent}
               onChange={(event) =>
                 setField("monthlyGrossRent", event.target.value)
@@ -167,7 +167,7 @@ export function CalculatorWorksheet() {
           >
             <input
               inputMode="decimal"
-              placeholder="7.00"
+              placeholder="e.g. 7.00"
               value={form.annualInterestRatePercent}
               onChange={(event) =>
                 setField("annualInterestRatePercent", event.target.value)
@@ -290,14 +290,31 @@ export function CalculatorWorksheet() {
           <Card elevated className="p-6">
             <p className="text-sm font-medium text-ink">Results appear here</p>
             <p className="mt-2 text-sm text-muted">
-              Enter price, down, rent, and a rate estimate. No email wall.
-              Nothing here is a quote or a credit decision.
+              Still need {missingFields(form, interestOnly).join(", ")}. No
+              email wall. Nothing here is a quote or a credit decision.
             </p>
           </Card>
         )}
       </div>
     </div>
   );
+}
+
+function missingFields(
+  form: typeof emptyForm,
+  interestOnly: boolean,
+): string[] {
+  const needed: string[] = [];
+  if (!Number.isFinite(parseNumber(form.purchasePrice))) needed.push("price");
+  if (!Number.isFinite(parseNumber(form.downPaymentValue))) needed.push("down");
+  if (!Number.isFinite(parseNumber(form.monthlyGrossRent))) needed.push("rent");
+  if (!Number.isFinite(parseNumber(form.annualInterestRatePercent))) {
+    needed.push("rate estimate");
+  }
+  if (!interestOnly && !Number.isFinite(parseNumber(form.termYears))) {
+    needed.push("term");
+  }
+  return needed.length > 0 ? needed : ["a valid number in each required field"];
 }
 
 function ExpenseField({
