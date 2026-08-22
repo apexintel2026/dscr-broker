@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { PhoneLinks } from "@/components/PhoneLinks";
 import { navLinks, resourceLinks, site } from "@/lib/site";
 
 const legalLinks = [
@@ -16,6 +17,7 @@ export function Footer() {
           <p className="font-medium text-ink">{site.name}</p>
           <p className="text-sm text-muted">{site.navSubtitle}</p>
           <p className="text-sm text-muted">{site.tagline}</p>
+          <PhoneLinks size="md" />
           <p className="text-xs text-muted">
             Broker, not a lender. We do not make credit decisions or fund
             loans.
