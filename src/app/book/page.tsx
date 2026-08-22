@@ -1,6 +1,6 @@
 import { BookingCalendar } from "@/components/BookingCalendar";
+import { LeadForm } from "@/components/LeadForm";
 import { PageHero } from "@/components/PageHero";
-import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Container } from "@/components/ui/Container";
 import { buildMetadata } from "@/lib/metadata";
@@ -32,16 +32,29 @@ export default function BookPage() {
             <li>Hold plan (LTR, STR, mid-term)</li>
           </ul>
           <p className="mt-6 text-xs text-muted">
-            The call is a desk review, not a credit decision. Prefer email
-            instead of the calendar?
+            The call is a desk review, not a credit decision. Not ready to
+            pick a time? Use the form below — send the deal, we will reach
+            out.
           </p>
-          <Button href="/contact" variant="secondary" className="mt-3">
-            Contact the desk instead
-          </Button>
         </Card>
 
         <Card elevated className="order-1 overflow-hidden lg:order-2 lg:col-span-8">
           <BookingCalendar />
+        </Card>
+      </Container>
+
+      <Container className="pb-12">
+        <Card elevated className="overflow-hidden">
+          <div className="border-b border-border px-6 py-5">
+            <h2 className="text-lg font-medium text-ink">
+              Send the deal, we will reach out
+            </h2>
+            <p className="mt-1 text-sm text-muted">
+              Fallback if you do not want to pick a time yet. Same desk.
+              Broker, not a lender.
+            </p>
+          </div>
+          <LeadForm title="Send the deal to the dscr.broker desk" />
         </Card>
       </Container>
     </>

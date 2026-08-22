@@ -1,5 +1,6 @@
-import { ContactForm } from "@/components/ContactForm";
+import { LeadForm } from "@/components/LeadForm";
 import { PageHero } from "@/components/PageHero";
+import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Container } from "@/components/ui/Container";
 import { site } from "@/lib/site";
@@ -8,7 +9,7 @@ import { buildMetadata } from "@/lib/metadata";
 export const metadata = buildMetadata({
   title: "Contact",
   description:
-    "Contact the dscr.broker desk about a business-purpose investor loan. Prefer a 30-minute strategy call when you have a live deal.",
+    "Send a deal note to the dscr.broker desk. Broker, not a lender. Prefer a 30-minute strategy call when you have a live file.",
   path: "/contact",
 });
 
@@ -18,11 +19,11 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact"
         title="Write the desk."
-        description="If you have a live deal, book the call. Use this form for a short note. Phase 1 does not send email or hit a webhook."
+        description="Send the deal. We will reach out. This is a desk note, not a credit decision. We are a broker, not a lender."
       />
       <Container className="grid gap-6 py-12 lg:grid-cols-12">
-        <Card elevated className="p-6 lg:col-span-7">
-          <ContactForm />
+        <Card elevated className="overflow-hidden lg:col-span-7">
+          <LeadForm title="Contact the dscr.broker desk" />
         </Card>
         <Card className="space-y-4 p-6 lg:col-span-5">
           <div>
@@ -32,14 +33,16 @@ export default function ContactPage() {
           <div>
             <p className="text-xs uppercase tracking-wider text-muted">Call</p>
             <p className="mt-1 text-sm text-muted">
-              30 minutes, strategy only —{" "}
-              <a href="/book" className="text-accent hover:underline">
-                /book
-              </a>
+              30 minutes. Desk review, not a credit decision.
             </p>
+            <Button href="/book" className="mt-3">
+              Book a 30-min call
+            </Button>
           </div>
           <p className="text-xs text-muted">
             Broker, not a lender. Business-purpose / non-owner-occupied only.
+            Submissions go to the desk in HighLevel — not a local thank-you
+            page.
           </p>
         </Card>
       </Container>
