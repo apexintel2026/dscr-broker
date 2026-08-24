@@ -11,8 +11,30 @@ describe("broker legal identity", () => {
       "GI Realty LLC, a California Real Estate Broker — CA DRE Lic# 01311868",
     );
     expect(site.legalEntity).not.toMatch(/NMLS/i);
+    expect(site.businessAddress).toBe(
+      "1741 Eastlake Pkwy, Ste 102-1101, Chula Vista, CA 91915",
+    );
     expect(site.equalHousingOpportunity).toBe("Equal Housing Opportunity");
     expect(site.phoneDisplay).toBe("619-618-1419");
+  });
+
+  it("renders the business address in the footer company cluster, not /privacy", () => {
+    const footer = readFileSync(
+      resolve(process.cwd(), "src/components/Footer.tsx"),
+      "utf8",
+    );
+    const privacy = readFileSync(
+      resolve(process.cwd(), "src/app/privacy/page.tsx"),
+      "utf8",
+    );
+    expect(footer).toContain("{site.legalEntity}");
+    expect(footer).toContain("{site.businessAddress}");
+    expect(footer).toContain("{site.equalHousingOpportunity}");
+    expect(footer).not.toMatch(/NMLS/i);
+    expect(privacy).not.toContain("site.businessAddress");
+    expect(privacy).not.toMatch(/Eastlake/i);
+    expect(privacy).not.toMatch(/Chula Vista/i);
+    expect(privacy).not.toMatch(/\b91915\b/);
   });
 
   it("uses that line in the FAQ instead of an NMLS placeholder", () => {

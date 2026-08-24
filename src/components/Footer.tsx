@@ -82,6 +82,9 @@ export function Footer() {
 
         <div className="space-y-3 text-sm">
           <p className="text-muted">{site.legalEntity}</p>
+          <address className="not-italic text-muted">
+            {site.businessAddress}
+          </address>
           <p className="flex items-center gap-2 text-muted">
             <EqualHousingMark />
             <span>{site.equalHousingOpportunity}</span>

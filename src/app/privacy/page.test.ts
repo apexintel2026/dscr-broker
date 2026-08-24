@@ -57,6 +57,10 @@ describe("/privacy policy", () => {
     expect(page).not.toMatch(/Saxony/i);
     expect(page).not.toMatch(/Encinitas/i);
     expect(page).not.toMatch(/\b92024\b/);
+    expect(page).not.toContain("site.businessAddress");
+    expect(page).not.toMatch(/Eastlake/i);
+    expect(page).not.toMatch(/Chula Vista/i);
+    expect(page).not.toMatch(/\b91915\b/);
     expect(page).not.toMatch(/\bP\.?\s*O\.?\s*Box\b/i);
     expect(page).not.toMatch(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/i);
     expect(page).not.toMatch(/mailto:/i);
