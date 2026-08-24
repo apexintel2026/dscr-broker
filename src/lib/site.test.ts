@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import { faqs } from "./faq";
 import { site } from "./site";
@@ -17,5 +19,16 @@ describe("broker legal identity", () => {
     expect(faqs.some((item) => /NMLS/i.test(item.q) || /NMLS/i.test(item.a))).toBe(
       false,
     );
+  });
+
+  it("commits a local Equal Housing Opportunity SVG, not a lender logo or HUD hotlink", () => {
+    const svg = readFileSync(
+      resolve(process.cwd(), "public/equal-housing-opportunity.svg"),
+      "utf8",
+    );
+    expect(svg).toContain("<svg");
+    expect(svg).toContain("Equal Housing Opportunity");
+    expect(svg).not.toMatch(/Equal Housing Lender/i);
+    expect(svg).not.toMatch(/https?:\/\/(?:www\.)?hud\.gov/i);
   });
 });

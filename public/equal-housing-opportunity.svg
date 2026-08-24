@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" role="img">
+  <!--
+    HUD Equal Housing Opportunity mark (house with equal sign).
+    Recreated from HUD FHEO print graphics (hud.gov/contactus/hudgraphics).
+    U.S. government work, public domain. Committed locally  do not hotlink HUD.
+    Not the FDIC equal-lender house-in-circle lockup.
+  -->
+  <title>Equal Housing Opportunity</title>
+  <rect width="100" height="100" fill="#ffffff"/>
+  <path
+    fill="#000000"
+    fill-rule="evenodd"
+    d="M50 6 L94 38 V94 H6 V38 Z M50 22 L78 42 V80 H22 V42 Z"
+  />
+  <rect x="34" y="48" width="32" height="8" fill="#000000"/>
+  <rect x="34" y="62" width="32" height="8" fill="#000000"/>
+</svg>
