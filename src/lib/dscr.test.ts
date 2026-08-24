@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   ACCEPTABLE_DSCR,
+  LENDER_DSCR_FORMULA,
   STRONG_DSCR,
   TYPICAL_LTV,
   bindingConstraint,
@@ -232,5 +233,13 @@ describe("calculateDeal validation", () => {
     const { errors, result } = calculateDeal(baseInputs({ purchasePrice: 0 }));
     expect(result).toBeNull();
     expect(errors.length).toBeGreaterThan(0);
+  });
+});
+
+describe("LENDER_DSCR_FORMULA", () => {
+  it("states rent ÷ PITIA/ITIA and nothing else", () => {
+    expect(LENDER_DSCR_FORMULA).toBe(
+      "Gross Monthly Rent ÷ Monthly PITIA (or ITIA if IO)",
+    );
   });
 });

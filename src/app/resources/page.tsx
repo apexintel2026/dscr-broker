@@ -19,7 +19,7 @@ export default function ResourcesPage() {
       <PageHero
         eyebrow="Desk notes"
         title="Read the file the way a desk reads it."
-        description="Short pieces for operators. No rate shopping. No retail refinance copy."
+        description="Operator notes on DSCR, occupancy, entity, and STR. No rate shopping. No retail refinance copy."
       />
       <Container className="grid gap-4 py-12 sm:grid-cols-2">
         {resourceLinks.map((item) => (

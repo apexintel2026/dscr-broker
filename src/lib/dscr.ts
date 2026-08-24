@@ -18,6 +18,10 @@
  *   Rent − PITIA/ITIA − optional vacancy/maint/PM (% of rent)
  */
 
+/** Canonical human-readable lender DSCR formula. Import this; do not restate a different one. */
+export const LENDER_DSCR_FORMULA =
+  "Gross Monthly Rent ÷ Monthly PITIA (or ITIA if IO)";
+
 export const STRONG_DSCR = 1.25;
 export const ACCEPTABLE_DSCR = 1.0;
 export const TYPICAL_LTV = 0.75;

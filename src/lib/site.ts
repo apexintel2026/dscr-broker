@@ -32,37 +32,67 @@ export const resourceLinks = [
     href: "/resources/what-is-dscr",
     title: "What is DSCR?",
     summary:
-      "How debt service coverage is used to desk an investor loan — income on the asset, not a W-2 story.",
+      "Lender DSCR is rent ÷ PITIA. How the ratio is used, what it is not, and how it differs from investor cash flow.",
+    related: [
+      "/resources/dscr-vs-conventional",
+      "/resources/requirements",
+      "/resources/short-term-rentals",
+    ],
   },
   {
     href: "/resources/dscr-vs-conventional",
     title: "DSCR vs. conventional",
     summary:
-      "When cash flow on the property is the file, and when a conventional path still makes more sense.",
+      "When the asset carries the file, when conventional or bank-statement still fits, and what changes on occupancy and income.",
+    related: [
+      "/resources/what-is-dscr",
+      "/resources/requirements",
+      "/resources/faq",
+    ],
   },
   {
     href: "/resources/requirements",
     title: "Typical requirements",
     summary:
-      "Entity, occupancy, reserves, and property types we see on business-purpose investor files.",
+      "Occupancy, entity, reserves, property types, credit and experience — a working list, not a program matrix.",
+    related: [
+      "/resources/what-is-dscr",
+      "/resources/llc-entity",
+      "/resources/short-term-rentals",
+    ],
   },
   {
     href: "/resources/short-term-rentals",
     title: "Short-term rentals",
     summary:
-      "How STR and mid-term rental deals are usually packaged for DSCR desks.",
+      "Airbnb and mid-term rentals on a DSCR file: income method, local rules, and how to run the worksheet.",
+    related: [
+      "/resources/what-is-dscr",
+      "/resources/requirements",
+      "/resources/llc-entity",
+    ],
   },
   {
     href: "/resources/llc-entity",
     title: "LLC and entity title",
     summary:
-      "Closing in an entity, vesting, and what capital sources typically ask to see.",
+      "Closing in an LLC: vesting, operating agreements, EIN, and the mismatches that stall a file.",
+    related: [
+      "/resources/requirements",
+      "/resources/what-is-dscr",
+      "/resources/faq",
+    ],
   },
   {
     href: "/resources/faq",
     title: "FAQ",
     summary:
-      "Direct answers on process, occupancy, and what a brokered investor loan actually is.",
+      "Direct answers and common objections. Broker, not a lender. Business-purpose only.",
+    related: [
+      "/resources/what-is-dscr",
+      "/resources/requirements",
+      "/resources/dscr-vs-conventional",
+    ],
   },
 ] as const;
 
