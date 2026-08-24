@@ -14,11 +14,11 @@ export function EducationLinks({
 
   return (
     <Card className="p-6">
-      <p className="text-sm font-medium text-ink">
+      <h3 className="text-sm font-medium text-ink">
         {occupancyType === "str"
           ? "STR desk notes for this worksheet"
           : "Desk notes for this worksheet"}
-      </p>
+      </h3>
       <ul className="mt-3 space-y-2">
         {niche ? (
           <li>

@@ -16,7 +16,7 @@ export default function TermsPage() {
       <PageHero
         eyebrow="Legal"
         title="Terms"
-        description="Placeholder terms for Phase 1. Informational only."
+        description="Placeholder terms. Informational only — not a complete terms of use."
       />
       <Container className="max-w-3xl space-y-6 py-12 text-sm leading-7 text-muted">
         <p>

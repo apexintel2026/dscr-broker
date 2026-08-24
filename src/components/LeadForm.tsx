@@ -1,4 +1,5 @@
 import { site } from "@/lib/site";
+import { EmbedFrame } from "@/components/EmbedFrame";
 
 export function LeadForm({
   title = "Send the deal to the desk",
@@ -6,12 +7,10 @@ export function LeadForm({
   title?: string;
 }) {
   return (
-    <iframe
+    <EmbedFrame
       src={site.formWidgetUrl}
       title={title}
-      className="block h-[min(90vh,820px)] min-h-[620px] w-full border-0 bg-elevated"
-      allow="clipboard-write; fullscreen"
-      loading="eager"
+      className="h-[min(90vh,820px)] min-h-[620px]"
     />
   );
 }

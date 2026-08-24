@@ -16,16 +16,17 @@ export default function PrivacyPage() {
       <PageHero
         eyebrow="Legal"
         title="Privacy"
-        description="Placeholder policy for Phase 1. Replace before collecting real lead or calendar data."
+        description="Placeholder policy. Replace with counsel-reviewed copy before treating this as a final privacy notice."
       />
       <Container className="max-w-3xl space-y-6 py-12 text-sm leading-7 text-muted">
         <p>
           {site.name} is a marketing site for a mortgage broker / investor
           loan desk. /book embeds a HighLevel scheduling widget. /contact
           (and a /book fallback) embed a HighLevel form — submissions go to
-          that vendor. Calculator lead notes are sent only if you submit the
-          optional calculator form. We do not run analytics pixels in this
-          build.
+          that vendor. Calculator lead notes are sent only if calculator lead
+          capture is enabled and you submit that optional form (off by
+          default). This build uses Vercel Analytics for first-party page
+          views. It does not load GA4 or Meta pixels.
         </p>
         <p>
           When intake and scheduling go live, this page will describe what we

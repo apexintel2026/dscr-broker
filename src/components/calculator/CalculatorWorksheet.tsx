@@ -98,7 +98,7 @@ export function CalculatorWorksheet({
     <div className="grid gap-6 lg:grid-cols-12">
       <Card className="space-y-6 p-6 lg:col-span-6">
         <div className="space-y-4">
-          <p className="text-sm font-medium text-ink">Property</p>
+          <h2 className="text-sm font-medium text-ink">Property</h2>
           <SegmentedControl
             label="Occupancy on this worksheet"
             value={occupancyType}
@@ -166,7 +166,7 @@ export function CalculatorWorksheet({
         </div>
 
         <div className="space-y-4 border-t border-border pt-6">
-          <p className="text-sm font-medium text-ink">Financing estimate</p>
+          <h2 className="text-sm font-medium text-ink">Financing estimate</h2>
           <Field
             label="Interest rate estimate (%)"
             hint="Your number — not a quote from this desk and not a lock."
@@ -210,7 +210,7 @@ export function CalculatorWorksheet({
         </div>
 
         <div className="space-y-4 border-t border-border pt-6">
-          <p className="text-sm font-medium text-ink">Taxes, insurance, HOA</p>
+          <h2 className="text-sm font-medium text-ink">Taxes, insurance, HOA</h2>
           <ExpenseField
             label="Taxes"
             amount={form.taxes}
@@ -235,9 +235,9 @@ export function CalculatorWorksheet({
         </div>
 
         <div className="space-y-4 border-t border-border pt-6">
-          <p className="text-sm font-medium text-ink">
+          <h2 className="text-sm font-medium text-ink">
             Investor expenses (optional)
-          </p>
+          </h2>
           <p className="text-xs text-muted">
             Display-only. These do not change lender DSCR.
           </p>
@@ -296,11 +296,23 @@ export function CalculatorWorksheet({
           </>
         ) : (
           <Card elevated className="p-6">
-            <p className="text-sm font-medium text-ink">Results appear here</p>
-            <p className="mt-2 text-sm text-muted">
-              Still need {missingFields(form, interestOnly).join(", ")}. No
-              email wall. Nothing here is a quote or a credit decision.
-            </p>
+            <h2 className="text-sm font-medium text-ink">
+              {parsed?.errors.length
+                ? "Check these numbers"
+                : "Results appear here"}
+            </h2>
+            {parsed?.errors.length ? (
+              <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-danger">
+                {parsed.errors.map((error) => (
+                  <li key={error}>{error}</li>
+                ))}
+              </ul>
+            ) : (
+              <p className="mt-2 text-sm text-muted">
+                Still need {missingFields(form, interestOnly).join(", ")}. No
+                email wall. Nothing here is a quote or a credit decision.
+              </p>
+            )}
           </Card>
         )}
       </div>
@@ -313,13 +325,16 @@ function missingFields(
   interestOnly: boolean,
 ): string[] {
   const needed: string[] = [];
-  if (!Number.isFinite(parseNumber(form.purchasePrice))) needed.push("price");
-  if (!Number.isFinite(parseNumber(form.downPaymentValue))) needed.push("down");
-  if (!Number.isFinite(parseNumber(form.monthlyGrossRent))) needed.push("rent");
-  if (!Number.isFinite(parseNumber(form.annualInterestRatePercent))) {
-    needed.push("rate estimate");
-  }
-  if (!interestOnly && !Number.isFinite(parseNumber(form.termYears))) {
+  const price = parseNumber(form.purchasePrice);
+  const down = parseNumber(form.downPaymentValue);
+  const rent = parseNumber(form.monthlyGrossRent);
+  const rate = parseNumber(form.annualInterestRatePercent);
+  const term = parseNumber(form.termYears);
+  if (!Number.isFinite(price) || price <= 0) needed.push("price");
+  if (!Number.isFinite(down) || down < 0) needed.push("down");
+  if (!Number.isFinite(rent) || rent < 0) needed.push("rent");
+  if (!Number.isFinite(rate) || rate < 0) needed.push("rate estimate");
+  if (!interestOnly && (!Number.isFinite(term) || term <= 0)) {
     needed.push("term");
   }
   return needed.length > 0 ? needed : ["a valid number in each required field"];

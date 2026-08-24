@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
 import { DealSummary } from "@/components/calculator/DealSummary";
 import { BookCta } from "@/components/BookCta";
 import { PageHero } from "@/components/PageHero";
@@ -7,8 +6,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Container } from "@/components/ui/Container";
-import { calculateDeal } from "@/lib/dscr";
-import { decodeReportId } from "@/lib/dscr-codec";
+import { loadReport } from "@/lib/report";
 import { money } from "@/lib/format";
 import { buildMetadata } from "@/lib/metadata";
 
@@ -16,24 +14,51 @@ type Props = { params: Promise<{ id: string }> };
 
 export async function generateMetadata({ params }: Props) {
   const { id } = await params;
-  const inputs = decodeReportId(id);
-  const result = inputs ? calculateDeal(inputs).result : null;
-  return buildMetadata({
-    title: result
-      ? `Deal score ${result.dscrDisplay?.toFixed(2) ?? "—"}`
-      : "Deal report",
-    description:
-      "Shareable DSCR deal score from dscr.broker. Orientation only — not a credit decision or a commitment to lend.",
-    path: `/calculator/report/${id}`,
-  });
+  const report = loadReport(id);
+  return {
+    ...buildMetadata({
+      title: report
+        ? `Deal score ${report.result.dscrDisplay?.toFixed(2) ?? "—"}`
+        : "Deal report",
+      description:
+        "Shareable DSCR deal score from dscr.broker. Orientation only — not a credit decision or a commitment to lend.",
+      path: `/calculator/report/${id}`,
+    }),
+    robots: report ? undefined : { index: false, follow: false },
+  };
 }
 
 export default async function CalculatorReportPage({ params }: Props) {
   const { id } = await params;
-  const inputs = decodeReportId(id);
-  if (!inputs) notFound();
-  const { result, errors } = calculateDeal(inputs);
-  if (!result) notFound();
+  const report = loadReport(id);
+
+  if (!report) {
+    return (
+      <>
+        <PageHero
+          eyebrow="Deal score"
+          title="This snapshot could not be opened."
+          description="The link is incomplete, expired, or the numbers no longer decode. Run the calculator again — nothing here is a credit decision."
+        />
+        <Container className="py-12">
+          <Card elevated className="mx-auto max-w-lg space-y-4 px-6 py-10 text-center">
+            <p className="text-sm text-muted">
+              That shareable link did not decode. Open the calculator and run
+              the deal again.
+            </p>
+            <div className="flex flex-col justify-center gap-3 sm:flex-row">
+              <Button href="/calculator">Open the calculator</Button>
+              <Button href="/book" variant="secondary">
+                Book a 30-min call
+              </Button>
+            </div>
+          </Card>
+        </Container>
+      </>
+    );
+  }
+
+  const { inputs, result, errors } = report;
 
   return (
     <>
@@ -57,7 +82,7 @@ export default async function CalculatorReportPage({ params }: Props) {
         </div>
         <div className="space-y-4 lg:col-span-5">
           <Card className="space-y-3 p-6">
-            <p className="text-sm font-medium text-ink">Inputs used</p>
+            <h2 className="text-sm font-medium text-ink">Inputs used</h2>
             <dl className="space-y-2 text-sm">
               <Row label="Gross monthly rent" value={money(inputs.monthlyGrossRent)} />
               <Row

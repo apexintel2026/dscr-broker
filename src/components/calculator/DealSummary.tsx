@@ -49,9 +49,9 @@ export function DealSummary({
   return (
     <div className="space-y-4">
       <Card elevated className="p-6">
-        <p className="text-xs font-medium uppercase tracking-wider text-muted">
+        <h2 className="text-xs font-medium uppercase tracking-wider text-muted">
           Lender DSCR
-        </p>
+        </h2>
         <p className={`mt-2 font-mono text-5xl tracking-tight ${dscrColor}`}>
           {result.dscrDisplay === null ? "—" : ratio(result.dscrDisplay)}
         </p>
@@ -109,7 +109,7 @@ export function DealSummary({
       </Card>
 
       <Card className="space-y-3 p-6">
-        <p className="text-sm font-medium text-ink">Transparent math</p>
+        <h3 className="text-sm font-medium text-ink">Transparent math</h3>
         <Formula
           label={`Lender DSCR = Gross monthly rent ÷ ${result.debtServiceLabel}`}
           detail={`${money(inputs.monthlyGrossRent)} ÷ ${money(result.monthlyPitia)} = ${
@@ -135,7 +135,7 @@ export function DealSummary({
       </Card>
 
       <Card className="space-y-3 p-6">
-        <p className="text-sm font-medium text-ink">Coverage and leverage</p>
+        <h3 className="text-sm font-medium text-ink">Coverage and leverage</h3>
         <dl className="space-y-2 text-sm">
           <Row
             label="Rent needed for 1.00"

@@ -234,6 +234,17 @@ describe("calculateDeal validation", () => {
     expect(result).toBeNull();
     expect(errors.length).toBeGreaterThan(0);
   });
+
+  it("zero rent still returns a result and does not throw", () => {
+    const { errors, result } = calculateDeal(
+      baseInputs({ monthlyGrossRent: 0 }),
+    );
+    expect(errors).toEqual([]);
+    expect(result).not.toBeNull();
+    expect(result?.lenderDscr).toBe(0);
+    expect(result?.dscrDisplay).toBe(0);
+    expect(result?.dscrBand).toBe("weak");
+  });
 });
 
 describe("LENDER_DSCR_FORMULA", () => {

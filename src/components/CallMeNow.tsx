@@ -14,7 +14,7 @@ export function CallMeNow({
     <div className={cn("space-y-1.5", className)}>
       <Button
         href={CONTACT_FORM_HREF}
-        variant="secondary"
+        variant="danger"
         className={fullWidth ? "w-full sm:w-auto" : undefined}
       >
         Call me now
