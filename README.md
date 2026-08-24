@@ -4,7 +4,52 @@ Marketing site for **dscr.broker** — a DSCR / business-purpose investor-loan *
 
 Domain later: `dscr.broker` on Vercel. This repo does not require the custom domain to resolve.
 
-## Phase 4 (this build)
+## Phase 6 (this build)
+
+First niche landing: Short-term rental / Airbnb at `/str`.
+
+Niches are **copy + config**, not one-off pages. Config lives in `src/lib/niches.ts`. The conversion layout is `src/components/NicheLanding.tsx` (hero, why DSCR, income vs LTR, calculator CTA, Book + Call me now). The live calculator formula is imported from `src/lib/dscr.ts` — do not fork it.
+
+`/str` opens `/calculator?occupancy=str` so occupancy starts on STR. Same worksheet, same math.
+
+### How to add a niche (Bridge, Portfolio, …)
+
+1. Add an entry to `niches` in `src/lib/niches.ts`: `slug`, `href`, `name`, `occupancyType` (`ltr` | `str`), hero, why, income comparison, calculator CTA, `relatedResourceHref`, book CTA.
+2. Add a thin route that matches `href`, for example `src/app/bridge/page.tsx`:
+
+```tsx
+import { NicheLanding } from "@/components/NicheLanding";
+import { requireNiche } from "@/lib/niches";
+import { buildMetadata } from "@/lib/metadata";
+
+const niche = requireNiche("bridge");
+
+export const metadata = buildMetadata({
+  title: niche.seo.title,
+  description: niche.seo.description,
+  path: niche.href,
+  type: "article",
+});
+
+export default function BridgeNichePage() {
+  return <NicheLanding niche={niche} />;
+}
+```
+
+3. Home, the resources hub, footer, and sitemap already iterate `niches`. Link the related resource article to the new `href` and, if needed, a calculator deep-link (`/calculator?occupancy=str` or omit for LTR).
+4. Header: one short nav label is enough (`navLabel`). Do not add a full mega-menu.
+
+Do not change HighLevel widget URLs, `dscr.ts` math, or invent an NMLS number.
+
+## Phase 5 (paused)
+
+Calculator → HighLevel speed-to-lead is **paused**. Calculator use is weaker intent than a booked 30-minute call.
+
+- Leave `HIGHLEVEL_WEBHOOK_URL` unset. Do not wire the webhook.
+- `POST /api/leads`, `src/lib/lead-payload.ts`, and `LeadCapture` stay in the repo for later.
+- LeadCapture is **off by default**. It only renders when `NEXT_PUBLIC_CALCULATOR_LEAD_CAPTURE=true`. Production should keep this off until a webhook is actually configured.
+
+## Phase 4
 
 Knowledge / content layer. Same `/resources` hub and routes as Phase 1 — expanded in place into authority articles (not a second hub).
 
@@ -45,7 +90,7 @@ Live ungated single-property DSCR calculator.
 - Lender DSCR = Gross Monthly Rent ÷ Monthly PITIA (or ITIA if interest-only)
 - Investor cash flow is display-only and never mixed into lender DSCR
 - Shareable `/calculator/report/[id]` (inputs encoded in the id; math is re-run)
-- Optional lead form → `POST /api/leads` → `HIGHLEVEL_WEBHOOK_URL` if set
+- Lead capture (`LeadCapture` → `POST /api/leads`) is built but **off by default**. Phase 5 webhook is paused.
 
 Math lives in `src/lib/dscr.ts` with no UI imports. Do not fork the formula in Content/Growth pages.
 
@@ -66,11 +111,12 @@ npm start
 
 ## Environment
 
-Copy `.env.example` to `.env.local` if you want a webhook.
+Copy `.env.example` to `.env.local` only if you need local overrides. Do not set `HIGHLEVEL_WEBHOOK_URL` for Phase 5.
 
 | Variable | Required | Notes |
 | --- | --- | --- |
-| `HIGHLEVEL_WEBHOOK_URL` | No | If unset, `/api/leads` logs the flattened payload and still succeeds. Phase 5 wires the live URL. |
+| `HIGHLEVEL_WEBHOOK_URL` | No | **Paused.** Leave unset. If unset, `/api/leads` logs the flattened payload and still succeeds. |
+| `NEXT_PUBLIC_CALCULATOR_LEAD_CAPTURE` | No | Default off. Set to `true` to render calculator LeadCapture. Do not enable in production without a live webhook. |
 | `NEXT_PUBLIC_SITE_URL` | No | Absolute origin for `report_url` in the payload. Falls back to `https://dscr.broker`. |
 | `NEXT_PUBLIC_GHL_BOOKING_URL` | No | HighLevel booking iframe on `/book`. Defaults to the investor strategy-call widget. |
 | `NEXT_PUBLIC_GHL_FORM_URL` | No | HighLevel form iframe on `/contact` and `/book`. Defaults to the live desk form. |
@@ -135,9 +181,10 @@ Flattened JSON, no arrays. `POST` to `HIGHLEVEL_WEBHOOK_URL`.
 
 | Path | Notes |
 | --- | --- |
-| `/` | Hero, calculator teaser, 3-step process, book CTA |
-| `/calculator` | Live ungated worksheet |
+| `/` | Hero, calculator teaser, STR niche, 3-step process, book CTA |
+| `/calculator` | Live ungated worksheet. `?occupancy=str` starts occupancy on STR |
 | `/calculator/report/[id]` | Shareable deal score |
+| `/str` | Phase 6 STR / Airbnb niche landing |
 | `/how-it-works` | Process (not an education dump) |
 | `/resources` | Hub + Phase 4 articles |
 | `/resources/what-is-dscr` | What is DSCR |

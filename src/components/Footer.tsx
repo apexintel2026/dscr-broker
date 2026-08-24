@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { PhoneLinks } from "@/components/PhoneLinks";
+import { niches } from "@/lib/niches";
 import { navLinks, resourceLinks, site } from "@/lib/site";
 
 const legalLinks = [
@@ -55,6 +56,16 @@ export function Footer() {
             Resources
           </p>
           <ul className="space-y-2 text-sm">
+            {niches.map((niche) => (
+              <li key={niche.href}>
+                <Link
+                  href={niche.href}
+                  className="text-ink transition-colors duration-150 hover:text-accent"
+                >
+                  {niche.footerLabel}
+                </Link>
+              </li>
+            ))}
             {resourceLinks.map((link) => (
               <li key={link.href}>
                 <Link

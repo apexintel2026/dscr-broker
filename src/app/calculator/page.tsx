@@ -1,6 +1,7 @@
 import { CalculatorWorksheet } from "@/components/calculator/CalculatorWorksheet";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui/Container";
+import { occupancyFromQuery } from "@/lib/calculator-query";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({
@@ -10,7 +11,14 @@ export const metadata = buildMetadata({
   path: "/calculator",
 });
 
-export default function CalculatorPage() {
+type Props = {
+  searchParams: Promise<{ occupancy?: string | string[] }>;
+};
+
+export default async function CalculatorPage({ searchParams }: Props) {
+  const params = await searchParams;
+  const occupancy = occupancyFromQuery(params.occupancy);
+
   return (
     <>
       <PageHero
@@ -19,7 +27,7 @@ export default function CalculatorPage() {
         description="Lender DSCR is Gross Monthly Rent ÷ Monthly PITIA. Investor cash flow is a separate view. Rate is your estimate — not a quote. Not a credit decision."
       />
       <Container className="py-12">
-        <CalculatorWorksheet />
+        <CalculatorWorksheet key={occupancy} defaultOccupancy={occupancy} />
       </Container>
     </>
   );
