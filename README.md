@@ -4,7 +4,31 @@ Marketing site for **dscr.broker** — a DSCR / business-purpose investor-loan *
 
 Domain later: `dscr.broker` on Vercel. This repo does not require the custom domain to resolve.
 
-## Phase 6 (this build)
+## Phase 7 (this build)
+
+Polish: accessibility, Core Web Vitals, error states, security headers. Not a rewrite.
+
+- Skip link, `:focus-visible`, labeled calculator fields, keyboard mobile nav (Escape to close), heading order on key pages
+- HighLevel booking/form iframes are `loading="lazy"` with titles and reserved height (no CLS from zero-height embeds)
+- Calculator: zero rent still scores (weak); zero price stays on the worksheet with a clear message; invalid `/calculator/report/[id]` is a clean empty state
+- `next.config.ts` security headers: CSP (`frame-src` includes `api.leadconnectorhq.com`), `X-Frame-Options: DENY`, `Referrer-Policy`, `nosniff`, `Permissions-Policy`
+- Vercel Analytics page views only (`@vercel/analytics`). No GA4/Meta pixels — owner has not provided IDs
+- Mint Book CTA; red Call me now → `/contact#form`
+
+### Remaining owner items
+
+| Item | Status |
+| --- | --- |
+| NMLS ID in footer / terms | TBD — do not invent |
+| `dscr.broker` DNS → Vercel | Owner |
+| Calculator lead capture (`NEXT_PUBLIC_CALCULATOR_LEAD_CAPTURE`) | Off. Turn on only with a live webhook |
+| `HIGHLEVEL_WEBHOOK_URL` | Leave unset (Phase 5 paused) |
+| GA4 / Meta pixels | Optional later, needs real IDs |
+| Privacy / terms | Placeholders — counsel-reviewed copy still needed |
+
+Do not change HighLevel widget URLs, `src/lib/dscr.ts` math, or invent an NMLS number.
+
+## Phase 6
 
 First niche landing: Short-term rental / Airbnb at `/str`.
 
@@ -183,7 +207,7 @@ Flattened JSON, no arrays. `POST` to `HIGHLEVEL_WEBHOOK_URL`.
 | --- | --- |
 | `/` | Hero, calculator teaser, STR niche, 3-step process, book CTA |
 | `/calculator` | Live ungated worksheet. `?occupancy=str` starts occupancy on STR |
-| `/calculator/report/[id]` | Shareable deal score |
+| `/calculator/report/[id]` | Shareable deal score. Invalid id → clean empty state |
 | `/str` | Phase 6 STR / Airbnb niche landing |
 | `/how-it-works` | Process (not an education dump) |
 | `/resources` | Hub + Phase 4 articles |
@@ -209,6 +233,7 @@ Do not say we pre-approve, guarantee qualification, “get approved,” or “se
 - TypeScript
 - Tailwind CSS v4
 - Geist / Geist Mono via `next/font`
-- Vitest for `src/lib/dscr.ts`
+- Vitest for calculator math, security headers, sitemap, and report decode
+- `@vercel/analytics` (first-party page views; no extra ID)
 
-Vercel: import the repo and deploy as a standard Next.js app. Set the production domain to `dscr.broker` when DNS is ready.
+Vercel: import the repo and deploy as a standard Next.js app. Set the production domain to `dscr.broker` when DNS is ready. After deploy, confirm `/book` and `/contact` iframes still load (CSP must keep `api.leadconnectorhq.com` in `frame-src`).

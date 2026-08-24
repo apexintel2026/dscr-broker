@@ -24,11 +24,18 @@ export function ShareReport({ reportId }: { reportId: string }) {
 
   return (
     <div className="space-y-2">
-      <p className="text-sm font-medium text-ink">Shareable deal score</p>
-      <p className="text-xs text-muted">
-        Same math in another tab. No login. Not a credit package.
-      </p>
-      <input readOnly value={url} className={fieldInputClass} />
+      <label className="block space-y-2">
+        <span className="text-sm font-medium text-ink">Shareable deal score</span>
+        <span className="block text-xs text-muted">
+          Same math in another tab. No login. Not a credit package.
+        </span>
+        <input
+          readOnly
+          value={url}
+          aria-label="Shareable report URL"
+          className={fieldInputClass}
+        />
+      </label>
       <div className="flex flex-wrap gap-2">
         <Button type="button" variant="secondary" onClick={copy}>
           {copied ? "Copied" : "Copy link"}

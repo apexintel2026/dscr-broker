@@ -33,7 +33,7 @@ export function SegmentedControl<T extends string>({
   options: { value: T; label: string }[];
 }) {
   return (
-    <div className="space-y-1.5">
+    <div className="space-y-1.5" role="group" aria-label={label}>
       <p className="text-xs text-muted">{label}</p>
       <div className="grid grid-cols-2 gap-1 rounded-control border border-border bg-elevated p-1">
         {options.map((option) => {
@@ -42,6 +42,7 @@ export function SegmentedControl<T extends string>({
             <button
               key={option.value}
               type="button"
+              aria-pressed={active}
               onClick={() => onChange(option.value)}
               className={cn(
                 "rounded-[6px] px-3 py-2 text-xs font-medium transition-colors duration-150",

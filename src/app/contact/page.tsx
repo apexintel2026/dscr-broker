@@ -27,15 +27,21 @@ export default function ContactPage() {
           elevated
           className="scroll-mt-28 overflow-hidden lg:col-span-7"
         >
+          <div className="border-b border-border px-6 py-4">
+            <h2 className="font-medium text-ink">Send a note</h2>
+            <p className="mt-1 text-sm text-muted">
+              Hosted by HighLevel. Submit there — we will reach out.
+            </p>
+          </div>
           <LeadForm title="Contact the dscr.broker desk" />
         </Card>
         <Card className="space-y-4 p-6 lg:col-span-5">
           <div>
-            <p className="text-xs uppercase tracking-wider text-muted">Email</p>
+            <h2 className="text-xs uppercase tracking-wider text-muted">Email</h2>
             <p className="mt-1 font-mono text-sm text-ink">{site.email}</p>
           </div>
           <div>
-            <p className="text-xs uppercase tracking-wider text-muted">Call</p>
+            <h2 className="text-xs uppercase tracking-wider text-muted">Call</h2>
             <p className="mt-1 text-sm text-muted">
               30 minutes. Desk review, not a credit decision.
             </p>

@@ -25,7 +25,7 @@ export default function ResourcesPage() {
       />
       <Container className="space-y-10 py-12">
         <div className="space-y-4">
-          <p className="text-sm font-medium text-ink">Niches</p>
+          <h2 className="text-sm font-medium text-ink">Niches</h2>
           <ul
             className={`grid gap-4 ${niches.length > 1 ? "sm:grid-cols-2" : ""}`}
           >
@@ -37,9 +37,9 @@ export default function ResourcesPage() {
                     className="h-full p-6 transition-colors duration-150 group-hover:border-muted"
                   >
                     <Badge tone="accent">{niche.navLabel}</Badge>
-                    <h2 className="mt-3 text-lg font-medium text-ink">
+                    <h3 className="mt-3 text-lg font-medium text-ink">
                       {niche.name}
-                    </h2>
+                    </h3>
                     <p className="mt-2 text-sm text-muted">
                       {niche.seo.description}
                     </p>
@@ -50,16 +50,19 @@ export default function ResourcesPage() {
             ))}
           </ul>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2">
-          {resourceLinks.map((item) => (
-            <Link key={item.href} href={item.href} className="group">
-              <Card elevated className="h-full p-6 transition-colors duration-150 group-hover:border-muted">
-                <h2 className="text-lg font-medium text-ink">{item.title}</h2>
-                <p className="mt-2 text-sm text-muted">{item.summary}</p>
-                <p className="mt-4 text-sm text-accent">Read →</p>
-              </Card>
-            </Link>
-          ))}
+        <div className="space-y-4">
+          <h2 className="text-sm font-medium text-ink">Desk notes</h2>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {resourceLinks.map((item) => (
+              <Link key={item.href} href={item.href} className="group">
+                <Card elevated className="h-full p-6 transition-colors duration-150 group-hover:border-muted">
+                  <h3 className="text-lg font-medium text-ink">{item.title}</h3>
+                  <p className="mt-2 text-sm text-muted">{item.summary}</p>
+                  <p className="mt-4 text-sm text-accent">Read →</p>
+                </Card>
+              </Link>
+            ))}
+          </div>
         </div>
       </Container>
       <BookCta />

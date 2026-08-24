@@ -18,7 +18,7 @@ export function PhoneLinks({
         className,
       )}
     >
-      <span className="text-muted">Call or text us.</span>
+      <span className="whitespace-nowrap text-muted">Call or text us.</span>
       <a
         href={`tel:${site.phoneHref}`}
         className="font-mono tracking-tight text-ink transition-colors duration-150 hover:text-accent"

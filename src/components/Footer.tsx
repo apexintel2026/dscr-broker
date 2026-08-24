@@ -26,9 +26,9 @@ export function Footer() {
         </div>
 
         <div>
-          <p className="mb-3 text-xs font-medium uppercase tracking-wider text-muted">
+          <h2 className="mb-3 text-xs font-medium uppercase tracking-wider text-muted">
             Desk
-          </p>
+          </h2>
           <ul className="space-y-2 text-sm">
             {navLinks.map((link) => (
               <li key={link.href}>
@@ -52,9 +52,9 @@ export function Footer() {
         </div>
 
         <div>
-          <p className="mb-3 text-xs font-medium uppercase tracking-wider text-muted">
+          <h2 className="mb-3 text-xs font-medium uppercase tracking-wider text-muted">
             Resources
-          </p>
+          </h2>
           <ul className="space-y-2 text-sm">
             {niches.map((niche) => (
               <li key={niche.href}>
@@ -80,9 +80,9 @@ export function Footer() {
         </div>
 
         <div className="space-y-3 text-sm">
-          <p className="text-xs font-medium uppercase tracking-wider text-muted">
+          <h2 className="text-xs font-medium uppercase tracking-wider text-muted">
             Compliance
-          </p>
+          </h2>
           <p className="text-muted">NMLS ID: TBD</p>
           <p className="text-muted">Equal Housing Opportunity</p>
           <p className="text-muted">
