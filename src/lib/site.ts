@@ -14,6 +14,8 @@ export const site = {
   email: "desk@dscr.broker",
   phoneDisplay: "619-618-1419",
   phoneHref: "+16196181419",
+  /** Legal-page company name. Distinct from the footer CA DRE license line. */
+  companyName: "GI Realty, LLC",
   bookingMinutes: 30,
   bookingWidgetUrl:
     process.env.NEXT_PUBLIC_GHL_BOOKING_URL || DEFAULT_GHL_BOOKING_URL,
