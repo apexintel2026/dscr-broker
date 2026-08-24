@@ -8,6 +8,7 @@ import { ShareReport } from "@/components/calculator/ShareReport";
 import { Card } from "@/components/ui/Card";
 import { calculateDeal, type AmountCadence, type DownPaymentMode, type DscrInputs, type OccupancyType } from "@/lib/dscr";
 import { encodeReportId } from "@/lib/dscr-codec";
+import { isCalculatorLeadCaptureEnabled } from "@/lib/flags";
 import { optionalNumber, parseNumber } from "@/lib/format";
 
 const emptyForm = {
@@ -24,14 +25,19 @@ const emptyForm = {
   propertyManagementPercent: "",
 };
 
-export function CalculatorWorksheet() {
+export function CalculatorWorksheet({
+  defaultOccupancy = "ltr",
+}: {
+  defaultOccupancy?: OccupancyType;
+}) {
   const [form, setForm] = useState(emptyForm);
   const [downPaymentMode, setDownPaymentMode] = useState<DownPaymentMode>("percent");
-  const [occupancyType, setOccupancyType] = useState<OccupancyType>("ltr");
+  const [occupancyType, setOccupancyType] = useState<OccupancyType>(defaultOccupancy);
   const [interestOnly, setInterestOnly] = useState(false);
   const [taxesCadence, setTaxesCadence] = useState<AmountCadence>("monthly");
   const [insuranceCadence, setInsuranceCadence] = useState<AmountCadence>("monthly");
   const [hoaCadence, setHoaCadence] = useState<AmountCadence>("monthly");
+  const showLeadCapture = isCalculatorLeadCaptureEnabled();
 
   function setField(key: keyof typeof emptyForm, value: string) {
     setForm((current) => ({ ...current, [key]: value }));
@@ -280,9 +286,11 @@ export function CalculatorWorksheet() {
             {reportId ? (
               <Card className="space-y-6 p-6">
                 <ShareReport reportId={reportId} />
-                <div className="border-t border-border pt-6">
-                  <LeadCapture reportId={reportId} />
-                </div>
+                {showLeadCapture ? (
+                  <div className="border-t border-border pt-6">
+                    <LeadCapture reportId={reportId} />
+                  </div>
+                ) : null}
               </Card>
             ) : null}
           </>

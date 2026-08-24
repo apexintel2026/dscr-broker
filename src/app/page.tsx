@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Container } from "@/components/ui/Container";
+import { niches } from "@/lib/niches";
 import { howItWorksSteps, site } from "@/lib/site";
 import { buildMetadata } from "@/lib/metadata";
 
@@ -103,6 +104,48 @@ export default function HomePage() {
               </div>
             ))}
           </Card>
+        </Container>
+      </section>
+
+      <section className="py-16">
+        <Container>
+          <div className="mb-8 space-y-2">
+            <Badge>Niches</Badge>
+            <h2 className="text-2xl font-medium tracking-tight text-ink sm:text-3xl">
+              Start with the hold you actually have.
+            </h2>
+            <p className="max-w-2xl text-muted">
+              Same desk, same formula. Occupancy and income method change the
+              file — not a different calculator.
+            </p>
+          </div>
+          <ul
+            className={`grid gap-4 ${niches.length > 1 ? "md:grid-cols-2" : "max-w-xl"}`}
+          >
+            {niches.map((niche) => (
+              <li key={niche.slug}>
+                <Card elevated className="flex h-full flex-col p-6">
+                  <p className="font-mono text-xs uppercase tracking-wider text-accent">
+                    {niche.navLabel}
+                  </p>
+                  <h3 className="mt-3 text-lg font-medium text-ink">
+                    {niche.name}
+                  </h3>
+                  <p className="mt-2 flex-1 text-sm text-muted">
+                    {niche.hero.description}
+                  </p>
+                  <p className="mt-4">
+                    <Link
+                      href={niche.href}
+                      className="text-sm text-accent hover:underline"
+                    >
+                      {niche.navLabel} landing →
+                    </Link>
+                  </p>
+                </Card>
+              </li>
+            ))}
+          </ul>
         </Container>
       </section>
 

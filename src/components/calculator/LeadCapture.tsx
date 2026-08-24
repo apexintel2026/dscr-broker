@@ -28,15 +28,20 @@ export function LeadCapture({ reportId }: { reportId: string }) {
           report_id: reportId,
         }),
       });
-      const data = (await response.json()) as { error?: string };
+      const data = (await response.json()) as {
+        error?: string;
+        webhook?: "sent" | "skipped" | "failed";
+      };
       if (!response.ok) {
         setStatus("error");
-        setMessage(data.error ?? "Could not send the snapshot.");
+        setMessage(data.error ?? "Could not save the snapshot.");
         return;
       }
       setStatus("done");
       setMessage(
-        "Desk has the snapshot. Book the call if you want the file reviewed.",
+        data.webhook === "sent"
+          ? "Snapshot forwarded. Book the call if you want the file reviewed."
+          : "Shareable report URL is ready. Calculator use does not notify the desk — book the call if you want this file reviewed.",
       );
     } catch {
       setStatus("error");
@@ -46,9 +51,10 @@ export function LeadCapture({ reportId }: { reportId: string }) {
 
   return (
     <form onSubmit={onSubmit} className="space-y-4">
-      <p className="text-sm font-medium text-ink">Send this deal to the desk</p>
+      <p className="text-sm font-medium text-ink">Optional snapshot</p>
       <p className="text-xs text-muted">
-        Optional. Results are already ungated. First name plus email or phone.
+        Results are already ungated. First name plus email or phone. This does
+        not book a call.
       </p>
       <label className="block space-y-1.5">
         <span className="text-xs text-muted">First name</span>
@@ -86,7 +92,7 @@ export function LeadCapture({ reportId }: { reportId: string }) {
         </label>
       </div>
       <Button type="submit" disabled={status === "saving" || status === "done"}>
-        {status === "saving" ? "Sending…" : "Send snapshot"}
+        {status === "saving" ? "Saving…" : "Save snapshot"}
       </Button>
       {message ? (
         <p className={`text-xs ${status === "error" ? "text-danger" : "text-muted"}`}>

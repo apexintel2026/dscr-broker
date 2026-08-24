@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Card } from "@/components/ui/Card";
 import type { OccupancyType } from "@/lib/dscr";
+import { niches } from "@/lib/niches";
 import { calculatorEducationLinks } from "@/lib/resources";
 
 export function EducationLinks({
@@ -9,6 +10,7 @@ export function EducationLinks({
   occupancyType: OccupancyType;
 }) {
   const links = calculatorEducationLinks(occupancyType);
+  const niche = niches.find((item) => item.occupancyType === occupancyType);
 
   return (
     <Card className="p-6">
@@ -18,6 +20,16 @@ export function EducationLinks({
           : "Desk notes for this worksheet"}
       </p>
       <ul className="mt-3 space-y-2">
+        {niche ? (
+          <li>
+            <Link
+              href={niche.href}
+              className="text-sm text-accent hover:underline"
+            >
+              {niche.name} →
+            </Link>
+          </li>
+        ) : null}
         {links.map((link) => (
           <li key={link.href}>
             <Link

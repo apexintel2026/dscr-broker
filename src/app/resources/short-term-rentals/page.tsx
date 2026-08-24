@@ -45,10 +45,11 @@ export default function ShortTermRentalsPage() {
         </p>
         <p>
           We do not scrape Airbnb or VRBO. The{" "}
-          <Link href="/calculator">calculator</Link> STR toggle marks rent as a
-          projection (<code>rent_is_projection=yes</code>). You still type the
-          monthly number. Lender DSCR remains rent ÷ PITIA (or ITIA if
-          interest-only).
+          <Link href="/calculator?occupancy=str">calculator</Link> STR toggle
+          marks rent as a projection (<code>rent_is_projection=yes</code>). You
+          still type the monthly number. Lender DSCR remains rent ÷ PITIA (or
+          ITIA if interest-only). For the conversion page, see{" "}
+          <Link href="/str">DSCR for short-term rentals</Link>.
         </p>
       </Prose>
 
@@ -87,10 +88,12 @@ export default function ShortTermRentalsPage() {
 
         <h2>How should you run STR numbers on the calculator?</h2>
         <p>
-          Switch occupancy to STR, enter a monthly rent you can defend, and
-          keep vacancy / maintenance / PM in the investor view. Those
-          percentages do not change lender DSCR. They are there so you can see
-          cash flow without mixing it into the qualification ratio.
+          Switch occupancy to STR (or{" "}
+          <Link href="/calculator?occupancy=str">open the calculator with STR already on</Link>
+          ), enter a monthly rent you can defend, and keep vacancy /
+          maintenance / PM in the investor view. Those percentages do not
+          change lender DSCR. They are there so you can see cash flow without
+          mixing it into the qualification ratio.
         </p>
         <p>
           See{" "}
@@ -111,7 +114,8 @@ export default function ShortTermRentalsPage() {
         <p>
           If you want the file mapped,{" "}
           <Link href="/book">book a 30-minute call</Link> with the address, the
-          channel history you have, and the hold plan.
+          channel history you have, and the hold plan — or start on the{" "}
+          <Link href="/str">STR landing</Link>.
         </p>
       </Prose>
     </ArticleLayout>
