@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { BookCta } from "@/components/BookCta";
-import { CallMeNow } from "@/components/CallMeNow";
+import { CtaCluster } from "@/components/CtaCluster";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHero } from "@/components/PageHero";
 import { Badge } from "@/components/ui/Badge";
@@ -28,12 +28,15 @@ export function NicheLanding({ niche }: { niche: Niche }) {
         title={niche.hero.title}
         description={niche.hero.description}
       >
-        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-start">
-          <Button href="/book">Book a 30-min call</Button>
-          <Button href={calculatorHref} variant="secondary">
+        <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-start">
+          <CtaCluster className="sm:w-auto" />
+          <Button
+            href={calculatorHref}
+            variant="secondary"
+            className="w-full sm:w-auto"
+          >
             {niche.calculator.ctaLabel}
           </Button>
-          <CallMeNow />
         </div>
         <p className="text-xs text-muted">
           Broker, not a lender. Business-purpose / non-owner-occupied only.
