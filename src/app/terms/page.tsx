@@ -37,8 +37,8 @@ export default function TermsPage() {
           mortgage advice.
         </p>
         <p>
-          NMLS ID: TBD. Equal Housing Opportunity. This placeholder is not a
-          complete terms of use and is not legal advice.
+          {site.legalEntity}. {site.equalHousingOpportunity}. This
+          placeholder is not a complete terms of use and is not legal advice.
         </p>
       </Container>
     </>

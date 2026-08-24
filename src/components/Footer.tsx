@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { EqualHousingMark } from "@/components/EqualHousingMark";
 import { Container } from "@/components/ui/Container";
 import { PhoneLinks } from "@/components/PhoneLinks";
 import { niches } from "@/lib/niches";
@@ -80,11 +81,11 @@ export function Footer() {
         </div>
 
         <div className="space-y-3 text-sm">
-          <h2 className="text-xs font-medium uppercase tracking-wider text-muted">
-            Compliance
-          </h2>
-          <p className="text-muted">NMLS ID: TBD</p>
-          <p className="text-muted">Equal Housing Opportunity</p>
+          <p className="text-muted">{site.legalEntity}</p>
+          <p className="flex items-center gap-2 text-muted">
+            <EqualHousingMark />
+            <span>{site.equalHousingOpportunity}</span>
+          </p>
           <p className="text-muted">
             This site is not a commitment to lend. All loans are subject to
             investor guidelines and underwriting by the capital source.

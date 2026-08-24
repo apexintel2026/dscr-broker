@@ -19,14 +19,14 @@ Polish: accessibility, Core Web Vitals, error states, security headers. Not a re
 
 | Item | Status |
 | --- | --- |
-| NMLS ID in footer / terms | TBD — do not invent |
+| Broker identity (footer / FAQ / terms) | GI Realty LLC, CA DRE Lic# 01311868 — do not invent an NMLS number |
 | `dscr.broker` DNS → Vercel | Owner |
 | Calculator lead capture (`NEXT_PUBLIC_CALCULATOR_LEAD_CAPTURE`) | Off. Turn on only with a live webhook |
 | `HIGHLEVEL_WEBHOOK_URL` | Leave unset (Phase 5 paused) |
 | GA4 / Meta pixels | Optional later, needs real IDs |
 | Privacy / terms | Placeholders — counsel-reviewed copy still needed |
 
-Do not change HighLevel widget URLs, `src/lib/dscr.ts` math, or invent an NMLS number.
+Do not change HighLevel widget URLs, `src/lib/dscr.ts` math, or invent an NMLS number. Broker identity is the CA DRE line in `src/lib/site.ts`.
 
 ## Phase 6
 
@@ -63,7 +63,7 @@ export default function BridgeNichePage() {
 3. Home, the resources hub, footer, and sitemap already iterate `niches`. Link the related resource article to the new `href` and, if needed, a calculator deep-link (`/calculator?occupancy=str` or omit for LTR).
 4. Header: one short nav label is enough (`navLabel`). Do not add a full mega-menu.
 
-Do not change HighLevel widget URLs, `dscr.ts` math, or invent an NMLS number.
+Do not change HighLevel widget URLs, `dscr.ts` math, or invent an NMLS number. Broker identity is the CA DRE line in `src/lib/site.ts`.
 
 ## Phase 5 (paused)
 

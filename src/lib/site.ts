@@ -18,6 +18,10 @@ export const site = {
   bookingWidgetUrl:
     process.env.NEXT_PUBLIC_GHL_BOOKING_URL || DEFAULT_GHL_BOOKING_URL,
   formWidgetUrl: process.env.NEXT_PUBLIC_GHL_FORM_URL || DEFAULT_GHL_FORM_URL,
+  /** CA DRE identity. Footer, FAQ, and terms share this string. */
+  legalEntity:
+    "GI Realty LLC, a California Real Estate Broker — CA DRE Lic# 01311868",
+  equalHousingOpportunity: "Equal Housing Opportunity",
 } as const;
 
 export const navLinks = [
