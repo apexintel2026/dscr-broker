@@ -12,7 +12,11 @@ export function EducationLinks({
 
   return (
     <Card className="p-6">
-      <p className="text-sm font-medium text-ink">Desk notes for this worksheet</p>
+      <p className="text-sm font-medium text-ink">
+        {occupancyType === "str"
+          ? "STR desk notes for this worksheet"
+          : "Desk notes for this worksheet"}
+      </p>
       <ul className="mt-3 space-y-2">
         {links.map((link) => (
           <li key={link.href}>

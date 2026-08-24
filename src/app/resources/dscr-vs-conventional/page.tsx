@@ -88,7 +88,33 @@ export default function DscrVsConventionalPage() {
         </p>
       </Prose>
 
-      <Card className="overflow-x-auto">
+      <div className="grid gap-4 sm:hidden">
+        {[
+          { heading: "DSCR desk", col: 1 as const, accent: true },
+          { heading: "Conventional", col: 2 as const, accent: false },
+          { heading: "Bank-statement", col: 3 as const, accent: false },
+        ].map((column) => (
+          <Card key={column.heading} className="p-5">
+            <p
+              className={`text-xs font-medium uppercase tracking-wider ${
+                column.accent ? "text-accent" : "text-muted"
+              }`}
+            >
+              {column.heading}
+            </p>
+            <dl className="mt-3 space-y-3">
+              {rows.map((row) => (
+                <div key={row[0]}>
+                  <dt className="text-xs text-muted">{row[0]}</dt>
+                  <dd className="mt-0.5 text-sm text-ink">{row[column.col]}</dd>
+                </div>
+              ))}
+            </dl>
+          </Card>
+        ))}
+      </div>
+
+      <Card className="hidden overflow-x-auto sm:block">
         <table className="w-full min-w-[36rem] text-left text-sm">
           <thead className="border-b border-border text-xs uppercase tracking-wider text-muted">
             <tr>
