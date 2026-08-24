@@ -1,4 +1,5 @@
 import { CallMeNow } from "@/components/CallMeNow";
+import { EducationLinks } from "@/components/calculator/EducationLinks";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
@@ -177,6 +178,8 @@ export function DealSummary({
           / {money(result.downPayment)}.
         </p>
       </Card>
+
+      <EducationLinks occupancyType={inputs.occupancyType} />
     </div>
   );
 }

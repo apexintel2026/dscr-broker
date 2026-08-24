@@ -6,21 +6,37 @@ Domain later: `dscr.broker` on Vercel. This repo does not require the custom dom
 
 ## Phase 4 (this build)
 
-Live HighLevel form widget. Submissions go into HighLevel (notifications/workflows live there).
+Knowledge / content layer. Same `/resources` hub and routes as Phase 1 — expanded in place into authority articles (not a second hub).
+
+| Path | Topic |
+| --- | --- |
+| `/resources/what-is-dscr` | What is a DSCR loan / how lender DSCR is calculated |
+| `/resources/dscr-vs-conventional` | DSCR vs conventional and bank-statement loans |
+| `/resources/requirements` | Occupancy, entity, reserves, property types, credit/experience (no program matrix) |
+| `/resources/short-term-rentals` | Airbnb / STR considerations |
+| `/resources/llc-entity` | Entity / LLC borrowing |
+| `/resources/faq` | FAQ plus common objections |
+
+Calculator results surface 1–3 of those articles (STR article when occupancy is STR; what-is-dscr / requirements otherwise). FAQPage JSON-LD on `/resources/faq`. Article/WebPage JSON-LD on the long articles. Lender DSCR copy imports the formula from `src/lib/dscr.ts`.
+
+## Phase 3
+
+Conversion: live HighLevel booking and form.
+
+### Booking
+
+- Widget URL: `https://api.leadconnectorhq.com/widget/bookings/investor-strategy-call-gr4odyuguyt`
+- Placement: `/book`
+- Override with `NEXT_PUBLIC_GHL_BOOKING_URL` if the calendar slug changes
+- HighLevel may redirect after book; we do not control that
+
+### Form
 
 - Form URL: `https://api.leadconnectorhq.com/widget/form/F8FDVqy3kaUeK4M4KKYZ`
 - Primary placement: `/contact`
 - Fallback on `/book` under the calendar: “Send the deal, we will reach out”
 - Override with `NEXT_PUBLIC_GHL_FORM_URL`
 - Local site-only contact form (route to `/thank-you`) is removed
-
-## Phase 3
-
-Live HighLevel booking widget on `/book`.
-
-- Widget URL: `https://api.leadconnectorhq.com/widget/bookings/investor-strategy-call-gr4odyuguyt`
-- Override with `NEXT_PUBLIC_GHL_BOOKING_URL` if the calendar slug changes
-- HighLevel may redirect after book; we do not control that
 
 ## Phase 2
 
@@ -122,8 +138,14 @@ Flattened JSON, no arrays. `POST` to `HIGHLEVEL_WEBHOOK_URL`.
 | `/` | Hero, calculator teaser, 3-step process, book CTA |
 | `/calculator` | Live ungated worksheet |
 | `/calculator/report/[id]` | Shareable deal score |
-| `/how-it-works` | Process |
-| `/resources` | Hub + articles |
+| `/how-it-works` | Process (not an education dump) |
+| `/resources` | Hub + Phase 4 articles |
+| `/resources/what-is-dscr` | What is DSCR |
+| `/resources/dscr-vs-conventional` | DSCR vs conventional / bank-statement |
+| `/resources/requirements` | Typical requirements |
+| `/resources/short-term-rentals` | STR / Airbnb |
+| `/resources/llc-entity` | LLC / entity title |
+| `/resources/faq` | FAQ + common objections |
 | `/about` | Desk positioning |
 | `/book` | Live HighLevel 30-minute strategy-call calendar |
 | `/contact` | Live HighLevel desk form |
