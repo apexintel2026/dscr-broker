@@ -23,6 +23,8 @@ export const site = {
   /** CA DRE identity. Footer, FAQ, and terms share this string. */
   legalEntity:
     "GI Realty LLC, a California Real Estate Broker — CA DRE Lic# 01311868",
+  /** Business address. Footer company cluster is the current surface. */
+  businessAddress: "1741 Eastlake Pkwy, Ste 102-1101, Chula Vista, CA 91915",
   equalHousingOpportunity: "Equal Housing Opportunity",
 } as const;
 
