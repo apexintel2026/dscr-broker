@@ -1,3 +1,5 @@
+import { site } from "./site";
+
 export const faqs = [
   {
     q: "Are you the lender?",
@@ -24,8 +26,8 @@ export const faqs = [
     a: "No. Pricing is deal-specific and set by the capital source, not by a page on this site.",
   },
   {
-    q: "What is your NMLS number?",
-    a: "TBD. It will be posted in the footer once issued / confirmed.",
+    q: "What is your license number?",
+    a: site.legalEntity,
   },
   {
     q: "How is lender DSCR calculated?",

@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { calculatorEducationLinks, relatedResources } from "./resources";
 import { articleJsonLd, faqPageJsonLd } from "./metadata";
 import { faqJsonLdItems } from "./faq";
+import { site } from "./site";
 
 describe("calculatorEducationLinks", () => {
   it("surfaces the STR article first when occupancy is STR", () => {
@@ -55,9 +56,12 @@ describe("JSON-LD helpers", () => {
       "@type": "Question",
       name: "Are you the lender?",
     });
-    const nmls = data.mainEntity.find(
-      (item) => item.name === "What is your NMLS number?",
+    const license = data.mainEntity.find(
+      (item) => item.name === "What is your license number?",
     );
-    expect(nmls?.acceptedAnswer.text).toContain("TBD");
+    expect(license?.acceptedAnswer.text).toBe(site.legalEntity);
+    expect(
+      data.mainEntity.some((item) => /NMLS/i.test(item.name)),
+    ).toBe(false);
   });
 });
