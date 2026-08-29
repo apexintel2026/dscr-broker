@@ -39,7 +39,48 @@ export function PartnerLanding({ partner }: { partner: Partner }) {
         <p className="text-xs text-muted">
           Broker, not a lender. Business-purpose / non-owner-occupied only.
         </p>
+        {partner.onePager ? (
+          <p className="text-sm">
+            <Link
+              href={partner.onePager.href}
+              className="font-medium text-accent hover:underline"
+            >
+              {partner.onePager.ctaLabel}
+            </Link>
+            <span className="text-muted">
+              {" "}
+              — when to send the file. One screen. Print or save as PDF.
+            </span>
+          </p>
+        ) : null}
       </PageHero>
+
+      {partner.onePager ? (
+        <section className="border-b border-border py-8">
+          <Container>
+            <Card
+              elevated
+              className="flex flex-col gap-4 p-6 sm:flex-row sm:items-center sm:justify-between"
+            >
+              <div className="space-y-1">
+                <h2 className="text-lg font-medium text-ink">
+                  {partner.onePager.ctaLabel}
+                </h2>
+                <p className="text-sm text-muted">
+                  When to send the file, what we need to look, calculator and
+                  book links. One screen you can print or forward.
+                </p>
+              </div>
+              <Button
+                href={partner.onePager.href}
+                className="w-full shrink-0 sm:w-auto"
+              >
+                {partner.onePager.ctaLabel}
+              </Button>
+            </Card>
+          </Container>
+        </section>
+      ) : null}
 
       <section className="py-16">
         <Container>

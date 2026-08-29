@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import sitemap from "@/app/sitemap";
 import robots from "@/app/robots";
 import { niches } from "@/lib/niches";
-import { partners } from "@/lib/partners";
+import { partnerPublicPaths } from "@/lib/partners";
 import { resourceLinks, site } from "@/lib/site";
 import { states } from "@/lib/states";
 
@@ -18,7 +18,7 @@ describe("sitemap", () => {
       "/book",
       "/contact",
       ...niches.map((item) => item.href),
-      ...partners.map((item) => item.href),
+      ...partnerPublicPaths(),
       ...states.map((item) => item.href),
       ...resourceLinks.map((item) => item.href),
     ];
@@ -27,6 +27,7 @@ describe("sitemap", () => {
     }
     expect(urls).toContain(`${site.url}/str`);
     expect(urls).toContain(`${site.url}/realtors`);
+    expect(urls).toContain(`${site.url}/realtors/when-to-send`);
     expect(urls).toContain(`${site.url}/texas`);
     expect(urls).toContain(`${site.url}/florida`);
     expect(urls).toContain(`${site.url}/resources/what-is-dscr`);
@@ -47,7 +48,7 @@ describe("sitemap", () => {
       "/privacy",
       "/terms",
       ...niches.map((item) => item.href),
-      ...partners.map((item) => item.href),
+      ...partnerPublicPaths(),
       ...states.map((item) => item.href),
       ...resourceLinks.map((item) => item.href),
     ].map((path) => `${site.url}${path}`).sort();

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { DealSummary } from "@/components/calculator/DealSummary";
+import { ShareReport } from "@/components/calculator/ShareReport";
 import { BookCta } from "@/components/BookCta";
 import { PageHero } from "@/components/PageHero";
 import { Badge } from "@/components/ui/Badge";
@@ -78,9 +79,19 @@ export default async function CalculatorReportPage({ params }: Props) {
 
       <Container className="grid gap-6 py-12 lg:grid-cols-12">
         <div className="lg:col-span-7">
-          <DealSummary inputs={inputs} result={result} />
+          <DealSummary inputs={inputs} result={result} showCta={false} />
         </div>
         <div className="space-y-4 lg:col-span-5">
+          <Card elevated className="p-6">
+            <ShareReport
+              reportId={id}
+              dscrDisplay={result.dscrDisplay}
+              purchasePrice={inputs.purchasePrice}
+              monthlyGrossRent={inputs.monthlyGrossRent}
+              occupancyType={inputs.occupancyType}
+              showOpenReport={false}
+            />
+          </Card>
           <Card className="space-y-3 p-6">
             <h2 className="text-sm font-medium text-ink">Inputs used</h2>
             <dl className="space-y-2 text-sm">
@@ -102,7 +113,6 @@ export default async function CalculatorReportPage({ params }: Props) {
               Broker, not a lender. Business-purpose / non-owner-occupied only.
             </p>
             <div className="flex flex-col gap-2 pt-2">
-              <Button href="/book">Book a free 30-min strategy call</Button>
               <Button href="/calculator" variant="secondary">
                 Adjust this deal
               </Button>

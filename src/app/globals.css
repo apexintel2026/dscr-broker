@@ -56,3 +56,66 @@ body {
   outline: 2px solid var(--color-ink);
   outline-offset: 2px;
 }
+
+/* Dedicated realtor one-pager: one screen on view, one letter page on print. */
+body:has(.one-pager-root) > header,
+body:has(.one-pager-root) > footer,
+body:has(.one-pager-root) .skip-link {
+  display: none;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body:has(.one-pager-root) {
+    background: #fff !important;
+    color: #111 !important;
+    color-scheme: light;
+  }
+
+  body:has(.one-pager-root) #main-content {
+    background: #fff;
+  }
+
+  .one-pager-root {
+    min-height: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+  }
+
+  .one-pager-sheet {
+    border: none !important;
+    background: #fff !important;
+    color: #111 !important;
+    max-width: none !important;
+    padding: 0 !important;
+  }
+
+  .one-pager-sheet h1,
+  .one-pager-sheet h2,
+  .one-pager-sheet .text-ink,
+  .one-pager-sheet .font-mono {
+    color: #111 !important;
+  }
+
+  .one-pager-sheet .text-muted {
+    color: #333 !important;
+  }
+
+  .one-pager-sheet .text-accent,
+  .one-pager-sheet a {
+    color: #0b5 !important;
+  }
+
+  .one-pager-sheet .border-border,
+  .one-pager-sheet .border-t {
+    border-color: #ccc !important;
+  }
+
+  @page {
+    size: letter portrait;
+    margin: 0.55in;
+  }
+}

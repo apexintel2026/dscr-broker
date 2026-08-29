@@ -5,9 +5,11 @@ import { articleJsonLd, buildMetadata } from "./metadata";
 import { niches, requireNiche } from "./niches";
 import {
   getPartner,
+  partnerPublicPaths,
   partners,
   requirePartner,
 } from "./partners";
+import { realtorOnePager } from "./realtor-one-pager";
 
 const FORBIDDEN_COPY =
   /get approved|see your rate|NMLS|referral fee|we pay|commission|apply now|sms blast|text blast/i;
@@ -25,6 +27,14 @@ describe("partners", () => {
     expect(realtors.relatedResourceHref).toBe("/resources");
     expect(realtors.footerLabel).toBe("For realtors");
     expect(realtors.hubLabel).toBe("Realtors");
+    expect(realtors.onePager).toEqual({
+      href: realtorOnePager.href,
+      ctaLabel: realtorOnePager.ctaLabel,
+    });
+    expect(partnerPublicPaths()).toEqual([
+      "/realtors",
+      "/realtors/when-to-send",
+    ]);
   });
 
   it("keeps unique SEO from the STR niche", () => {
@@ -98,6 +108,7 @@ describe("realtor landing wiring", () => {
     expect(landing).toContain("CtaCluster");
     expect(landing).toContain("articleJsonLd");
     expect(landing).toContain("LENDER_DSCR_FORMULA");
+    expect(landing).toContain("Print this one-pager");
     expect(landing).not.toMatch(FORBIDDEN_COPY);
   });
 

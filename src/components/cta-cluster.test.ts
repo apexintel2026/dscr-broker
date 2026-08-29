@@ -34,5 +34,8 @@ describe("stacked CTA alignment", () => {
     expect(read("src/components/calculator/DealSummary.tsx")).toContain(
       "CtaCluster",
     );
+    expect(read("src/components/calculator/ShareReport.tsx")).toContain(
+      "CtaCluster",
+    );
   });
 });
