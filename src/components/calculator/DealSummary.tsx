@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { CtaCluster } from "@/components/CtaCluster";
 import { EducationLinks } from "@/components/calculator/EducationLinks";
 import { Badge } from "@/components/ui/Badge";
@@ -30,10 +31,12 @@ export function DealSummary({
   inputs,
   result,
   showCta = true,
+  afterScore,
 }: {
   inputs: DscrInputs;
   result: DscrResult;
   showCta?: boolean;
+  afterScore?: ReactNode;
 }) {
   const band = result.dscrBand;
   const dscrColor =
@@ -72,6 +75,8 @@ export function DealSummary({
           </div>
         ) : null}
       </Card>
+
+      {afterScore}
 
       <Card className="grid gap-0 sm:grid-cols-2">
         <Metric
