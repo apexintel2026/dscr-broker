@@ -282,17 +282,29 @@ export function CalculatorWorksheet({
       <div className="space-y-4 lg:col-span-6">
         {parsed?.result ? (
           <>
-            <DealSummary inputs={parsed.inputs} result={parsed.result} />
-            {reportId ? (
-              <Card className="space-y-6 p-6">
-                <ShareReport reportId={reportId} />
-                {showLeadCapture ? (
-                  <div className="border-t border-border pt-6">
-                    <LeadCapture reportId={reportId} />
-                  </div>
-                ) : null}
-              </Card>
-            ) : null}
+            <DealSummary
+              inputs={parsed.inputs}
+              result={parsed.result}
+              showCta={false}
+              afterScore={
+                reportId ? (
+                  <Card elevated className="space-y-6 p-6">
+                    <ShareReport
+                      reportId={reportId}
+                      dscrDisplay={parsed.result.dscrDisplay}
+                      purchasePrice={parsed.inputs.purchasePrice}
+                      monthlyGrossRent={parsed.inputs.monthlyGrossRent}
+                      occupancyType={parsed.inputs.occupancyType}
+                    />
+                    {showLeadCapture ? (
+                      <div className="border-t border-border pt-6">
+                        <LeadCapture reportId={reportId} />
+                      </div>
+                    ) : null}
+                  </Card>
+                ) : null
+              }
+            />
           </>
         ) : (
           <Card elevated className="p-6">

@@ -1,3 +1,5 @@
+import { realtorOnePager } from "@/lib/realtor-one-pager";
+
 /**
  * Partner landings (realtor referral, later CPA / attorney if needed).
  * Copy + config, then a thin route that renders
@@ -41,6 +43,10 @@ export type Partner = {
   bookCta: {
     title: string;
     body: string;
+  };
+  onePager?: {
+    href: string;
+    ctaLabel: string;
   };
 };
 
@@ -110,6 +116,10 @@ export const partners = [
       title: "Book a 30-minute strategy call",
       body: "Bring the address, the rent story, and the hold plan. We desk investor loans. We do not fund them. You stay the realtor.",
     },
+    onePager: {
+      href: realtorOnePager.href,
+      ctaLabel: realtorOnePager.ctaLabel,
+    },
   },
 ] as const satisfies readonly Partner[];
 
@@ -125,4 +135,11 @@ export function requirePartner(slug: string): Partner {
     throw new Error(`Unknown partner: ${slug}`);
   }
   return partner;
+}
+
+export function partnerPublicPaths(): string[] {
+  return partners.flatMap((item) => [
+    item.href,
+    ...(item.onePager ? [item.onePager.href] : []),
+  ]);
 }
