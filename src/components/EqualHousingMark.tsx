@@ -16,7 +16,6 @@ export function EqualHousingMark({ className }: { className?: string }) {
       aria-label="Equal Housing Opportunity"
       className={cn("mt-0.5 h-8 w-8 shrink-0", className)}
     >
-      <title>Equal Housing Opportunity</title>
       <rect width="100" height="100" fill="#ffffff" />
       <path
         fill="#000000"

@@ -57,7 +57,8 @@ describe("Equal Housing Opportunity mark", () => {
     const mark = read("src/components/EqualHousingMark.tsx");
     expect(mark).toContain("<svg");
     expect(mark).toContain("fillRule=\"evenodd\"");
-    expect(mark).toContain("Equal Housing Opportunity");
+    expect(mark).toContain('aria-label="Equal Housing Opportunity"');
+    expect(mark).not.toContain("<title>");
     expect(mark).not.toMatch(/from ["']next\/image["']/);
     expect(mark).not.toContain("equal-housing-opportunity.svg");
     expect(mark).not.toMatch(/Equal Housing Lender/i);
