@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { SkipLink } from "@/components/SkipLink";
+import { defaultShareImage } from "@/lib/metadata";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -40,11 +41,13 @@ export const metadata: Metadata = {
     siteName: site.name,
     type: "website",
     locale: "en_US",
+    images: [defaultShareImage],
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.name} — ${site.tagline}`,
     description: site.description,
+    images: [defaultShareImage.url],
   },
   robots: {
     index: true,
