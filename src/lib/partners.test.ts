@@ -108,7 +108,7 @@ describe("realtor landing wiring", () => {
     expect(landing).toContain("CtaCluster");
     expect(landing).toContain("articleJsonLd");
     expect(landing).toContain("LENDER_DSCR_FORMULA");
-    expect(landing).toContain("Print this one-pager");
+    expect(landing).toContain("partner.onePager.ctaLabel");
     expect(landing).not.toMatch(FORBIDDEN_COPY);
   });
 

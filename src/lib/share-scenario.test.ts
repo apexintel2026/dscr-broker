@@ -82,8 +82,7 @@ describe("share report wiring", () => {
     expect(share).toContain("Copy link");
     expect(share).toContain("Text these numbers to {site.phoneDisplay}");
     expect(share).toContain("scenarioSmsHref");
-    expect(share).toContain("Leave the scenario");
-    expect(share).toContain("not a contact form");
+    expect(share).toContain("Leave the scenario, not a contact form");
     expect(share).toContain("CtaCluster");
     expect(share).not.toContain("/api/leads");
     expect(share).not.toMatch(/desk received|snapshot forwarded/i);

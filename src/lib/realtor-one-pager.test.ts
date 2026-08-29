@@ -92,8 +92,8 @@ describe("realtor one-pager wiring", () => {
     expect(sheet).toContain("PrintSaveButton");
     expect(sheet).toContain("one-pager-root");
     expect(sheet).toContain("one-pager-sheet");
-    expect(sheet).toContain(site.phoneDisplay);
-    expect(landing).toContain("Print this one-pager");
+    expect(sheet).toContain("site.phoneDisplay");
+    expect(landing).toContain("partner.onePager.ctaLabel");
     expect(landing).toContain("partner.onePager");
     expect(partners).toContain("realtorOnePager.href");
     expect(sheet).not.toMatch(FORBIDDEN_COPY);

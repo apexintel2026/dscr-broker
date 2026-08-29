@@ -55,8 +55,7 @@ export function ShareReport({
       <div className="space-y-2">
         <h2 className="text-lg font-medium text-ink">Share this scenario</h2>
         <p className="text-sm text-muted">
-          Copy the report URL or text the numbers. Leave the scenario — not a
-          contact form.
+          Copy the report URL or text the numbers. Leave the scenario, not a contact form.
         </p>
       </div>
       <label className="block space-y-2">
