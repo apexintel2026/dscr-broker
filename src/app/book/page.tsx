@@ -1,4 +1,5 @@
 import { BookingCalendar } from "@/components/BookingCalendar";
+import { EmbedPanel } from "@/components/EmbedPanel";
 import { LeadForm } from "@/components/LeadForm";
 import { PageHero } from "@/components/PageHero";
 import { Card } from "@/components/ui/Card";
@@ -38,24 +39,22 @@ export default function BookPage() {
           </p>
         </Card>
 
-        <Card elevated className="order-1 overflow-hidden lg:order-2 lg:col-span-8">
+        <EmbedPanel
+          className="order-1 lg:order-2 lg:col-span-8"
+          title="Pick a time"
+          description="Hosted by HighLevel. Prefer a voice? Call or text the desk."
+        >
           <BookingCalendar />
-        </Card>
+        </EmbedPanel>
       </Container>
 
       <Container className="pb-12">
-        <Card elevated className="overflow-hidden">
-          <div className="border-b border-border px-6 py-5">
-            <h2 className="text-lg font-medium text-ink">
-              Send the deal, we will reach out
-            </h2>
-            <p className="mt-1 text-sm text-muted">
-              Fallback if you do not want to pick a time yet. Same desk.
-              Broker, not a lender.
-            </p>
-          </div>
+        <EmbedPanel
+          title="Send the deal, we will reach out"
+          description="Fallback if you do not want to pick a time yet. Same desk. Broker, not a lender."
+        >
           <LeadForm title="Send the deal to the dscr.broker desk" />
-        </Card>
+        </EmbedPanel>
       </Container>
     </>
   );

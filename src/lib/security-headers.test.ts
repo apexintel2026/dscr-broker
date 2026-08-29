@@ -25,4 +25,13 @@ describe("security headers", () => {
   it("does not invent a GA or Meta host", () => {
     expect(contentSecurityPolicy).not.toMatch(/googletagmanager|facebook\.net|google-analytics/i);
   });
+
+  it("allows only the HighLevel form_embed.js host on script-src", () => {
+    expect(contentSecurityPolicy).toMatch(
+      /script-src[^;]*https:\/\/link\.msgsndr\.com/,
+    );
+    expect(contentSecurityPolicy).not.toMatch(/script-src[^;]*https:\/\/\*\.msgsndr\.com/);
+    expect(contentSecurityPolicy).not.toMatch(/connect-src[^;]*msgsndr/);
+    expect(contentSecurityPolicy).not.toMatch(/frame-src[^;]*msgsndr/);
+  });
 });
