@@ -87,6 +87,7 @@ describe("share report wiring", () => {
     expect(share).not.toContain("/api/leads");
     expect(share).not.toMatch(/desk received|snapshot forwarded/i);
     expect(worksheet).toContain("<ShareReport");
+    expect(worksheet).toContain("afterScore=");
     expect(worksheet).toContain("dscrDisplay={parsed.result.dscrDisplay}");
     expect(report).toContain("<ShareReport");
     expect(report).toContain("showOpenReport={false}");
