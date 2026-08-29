@@ -25,6 +25,25 @@ describe("sitemap", () => {
     expect(urls).toContain(`${site.url}/resources/what-is-dscr`);
     expect(urls).toContain(`${site.url}/resources/short-term-rentals`);
   });
+
+  it("does not add or drop routes for the share-image work", () => {
+    const urls = sitemap().map((entry) => entry.url).sort();
+    const expected = [
+      "/",
+      "/calculator",
+      "/how-it-works",
+      "/resources",
+      "/about",
+      "/book",
+      "/contact",
+      "/thank-you",
+      "/privacy",
+      "/terms",
+      ...niches.map((item) => item.href),
+      ...resourceLinks.map((item) => item.href),
+    ].map((path) => `${site.url}${path}`).sort();
+    expect(urls).toEqual(expected);
+  });
 });
 
 describe("robots", () => {

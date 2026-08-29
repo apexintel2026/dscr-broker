@@ -5,9 +5,14 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Container } from "@/components/ui/Container";
+import { JsonLd } from "@/components/JsonLd";
 import { niches } from "@/lib/niches";
 import { howItWorksSteps, site } from "@/lib/site";
-import { buildMetadata } from "@/lib/metadata";
+import {
+  buildMetadata,
+  organizationJsonLd,
+  websiteJsonLd,
+} from "@/lib/metadata";
 
 export const metadata = buildMetadata({
   title: site.name,
@@ -18,6 +23,8 @@ export const metadata = buildMetadata({
 export default function HomePage() {
   return (
     <>
+      <JsonLd data={organizationJsonLd()} />
+      <JsonLd data={websiteJsonLd()} />
       <section className="border-b border-border">
         <Container className="grid gap-10 py-14 sm:py-20 lg:grid-cols-12 lg:items-center">
           <div className="space-y-6 lg:col-span-7">
