@@ -4,9 +4,10 @@ import robots from "@/app/robots";
 import { niches } from "@/lib/niches";
 import { partners } from "@/lib/partners";
 import { resourceLinks, site } from "@/lib/site";
+import { states } from "@/lib/states";
 
 describe("sitemap", () => {
-  it("includes core routes, STR niche, realtor partner, and resource articles", () => {
+  it("includes core routes, STR niche, realtor partner, state landings, and resource articles", () => {
     const urls = sitemap().map((entry) => entry.url);
     const expected = [
       "/",
@@ -18,6 +19,7 @@ describe("sitemap", () => {
       "/contact",
       ...niches.map((item) => item.href),
       ...partners.map((item) => item.href),
+      ...states.map((item) => item.href),
       ...resourceLinks.map((item) => item.href),
     ];
     for (const path of expected) {
@@ -25,6 +27,8 @@ describe("sitemap", () => {
     }
     expect(urls).toContain(`${site.url}/str`);
     expect(urls).toContain(`${site.url}/realtors`);
+    expect(urls).toContain(`${site.url}/texas`);
+    expect(urls).toContain(`${site.url}/florida`);
     expect(urls).toContain(`${site.url}/resources/what-is-dscr`);
     expect(urls).toContain(`${site.url}/resources/short-term-rentals`);
   });
@@ -44,6 +48,7 @@ describe("sitemap", () => {
       "/terms",
       ...niches.map((item) => item.href),
       ...partners.map((item) => item.href),
+      ...states.map((item) => item.href),
       ...resourceLinks.map((item) => item.href),
     ].map((path) => `${site.url}${path}`).sort();
     expect(urls).toEqual(expected);

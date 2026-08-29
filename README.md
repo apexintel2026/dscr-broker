@@ -65,6 +65,39 @@ export default function BridgeNichePage() {
 
 Do not change HighLevel widget URLs, `dscr.ts` math, or invent an NMLS number. Broker identity is the CA DRE line in `src/lib/site.ts`.
 
+## State landings
+
+V1 property-state set: Texas (`/texas`) and Florida (`/florida`). Clean public paths for search / AEO — not `/resources/dscr-texas`.
+
+States are **copy + config**, not one-off pages. Config lives in `src/lib/states.ts`. The conversion layout is `src/components/StateLanding.tsx` (PageHero, CtaCluster, AEO H2s with a direct first-paragraph answer, calculator CTA, Book + Call me now, Article JSON-LD).
+
+### How to add a state
+
+1. Add an entry to `states` in `src/lib/states.ts`: `slug`, `href` (`/georgia`), `abbreviation`, hero, AEO `sections` (question H2 + direct `answer`), calculator CTA, book CTA.
+2. Add a thin route that matches `href`, for example `src/app/georgia/page.tsx`:
+
+```tsx
+import { StateLanding } from "@/components/StateLanding";
+import { requireState } from "@/lib/states";
+import { buildMetadata } from "@/lib/metadata";
+
+const state = requireState("georgia");
+
+export const metadata = buildMetadata({
+  title: state.seo.title,
+  description: state.seo.description,
+  path: state.href,
+  type: "article",
+});
+
+export default function GeorgiaPage() {
+  return <StateLanding state={state} />;
+}
+```
+
+3. Resources hub, footer, and sitemap already iterate `states`. Do **not** add the state to the primary header nav.
+4. Do not claim a residential mortgage license in the property state. Do not invent a program matrix, rates, or an NMLS number. Clone one state at a time.
+
 ## Phase 5 (paused)
 
 Calculator → HighLevel speed-to-lead is **paused**. Calculator use is weaker intent than a booked 30-minute call.
@@ -209,6 +242,9 @@ Flattened JSON, no arrays. `POST` to `HIGHLEVEL_WEBHOOK_URL`.
 | `/calculator` | Live ungated worksheet. `?occupancy=str` starts occupancy on STR |
 | `/calculator/report/[id]` | Shareable deal score. Invalid id → clean empty state |
 | `/str` | Phase 6 STR / Airbnb niche landing |
+| `/realtors` | Realtor referral landing |
+| `/texas` | Texas DSCR education / conversion |
+| `/florida` | Florida DSCR education / conversion |
 | `/how-it-works` | Process (not an education dump) |
 | `/resources` | Hub + Phase 4 articles |
 | `/resources/what-is-dscr` | What is DSCR |

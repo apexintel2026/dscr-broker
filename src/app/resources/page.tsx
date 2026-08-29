@@ -7,6 +7,7 @@ import { Container } from "@/components/ui/Container";
 import { niches } from "@/lib/niches";
 import { partners } from "@/lib/partners";
 import { resourceLinks } from "@/lib/site";
+import { states } from "@/lib/states";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({
@@ -43,6 +44,32 @@ export default function ResourcesPage() {
                     </h3>
                     <p className="mt-2 text-sm text-muted">
                       {niche.seo.description}
+                    </p>
+                    <p className="mt-4 text-sm text-accent">Open landing →</p>
+                  </Card>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="space-y-4">
+          <h2 className="text-sm font-medium text-ink">States</h2>
+          <ul
+            className={`grid gap-4 ${states.length > 1 ? "sm:grid-cols-2" : ""}`}
+          >
+            {states.map((state) => (
+              <li key={state.slug}>
+                <Link href={state.href} className="group block h-full">
+                  <Card
+                    elevated
+                    className="h-full p-6 transition-colors duration-150 group-hover:border-muted"
+                  >
+                    <Badge tone="accent">{state.hubLabel}</Badge>
+                    <h3 className="mt-3 text-lg font-medium text-ink">
+                      {state.name}
+                    </h3>
+                    <p className="mt-2 text-sm text-muted">
+                      {state.seo.description}
                     </p>
                     <p className="mt-4 text-sm text-accent">Open landing →</p>
                   </Card>
