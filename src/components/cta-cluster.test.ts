@@ -30,6 +30,7 @@ describe("stacked CTA alignment", () => {
     expect(read("src/app/page.tsx")).toContain("CtaCluster");
     expect(read("src/components/NicheLanding.tsx")).toContain("CtaCluster");
     expect(read("src/components/PartnerLanding.tsx")).toContain("CtaCluster");
+    expect(read("src/components/StateLanding.tsx")).toContain("CtaCluster");
     expect(read("src/components/calculator/DealSummary.tsx")).toContain(
       "CtaCluster",
     );

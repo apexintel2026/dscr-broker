@@ -5,6 +5,7 @@ import { PhoneLinks } from "@/components/PhoneLinks";
 import { niches } from "@/lib/niches";
 import { partners } from "@/lib/partners";
 import { navLinks, resourceLinks, site } from "@/lib/site";
+import { states } from "@/lib/states";
 
 const legalLinks = [
   { href: "/privacy", label: "Privacy" },
@@ -68,6 +69,16 @@ export function Footer() {
             Resources
           </h2>
           <ul className="space-y-2 text-sm">
+            {states.map((state) => (
+              <li key={state.href}>
+                <Link
+                  href={state.href}
+                  className="text-ink transition-colors duration-150 hover:text-accent"
+                >
+                  {state.footerLabel}
+                </Link>
+              </li>
+            ))}
             {niches.map((niche) => (
               <li key={niche.href}>
                 <Link

@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { niches } from "@/lib/niches";
 import { partners } from "@/lib/partners";
 import { resourceLinks, site } from "@/lib/site";
+import { states } from "@/lib/states";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPaths = [
@@ -21,6 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...staticPaths,
     ...niches.map((item) => item.href),
     ...partners.map((item) => item.href),
+    ...states.map((item) => item.href),
     ...resourceLinks.map((item) => item.href),
   ].map((path) => ({
     url: `${site.url}${path}`,
