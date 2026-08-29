@@ -3,6 +3,7 @@ import { EqualHousingMark } from "@/components/EqualHousingMark";
 import { Container } from "@/components/ui/Container";
 import { PhoneLinks } from "@/components/PhoneLinks";
 import { niches } from "@/lib/niches";
+import { partners } from "@/lib/partners";
 import { navLinks, resourceLinks, site } from "@/lib/site";
 
 const legalLinks = [
@@ -49,6 +50,16 @@ export function Footer() {
                 Book a 30-min call
               </Link>
             </li>
+            {partners.map((partner) => (
+              <li key={partner.href}>
+                <Link
+                  href={partner.href}
+                  className="text-ink transition-colors duration-150 hover:text-accent"
+                >
+                  {partner.footerLabel}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
