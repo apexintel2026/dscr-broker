@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import { faqs } from "./faq";
-import { site } from "./site";
+import { GHL_FORM_EMBED_SCRIPT, site } from "./site";
 
 describe("broker legal identity", () => {
   it("stores the CA DRE entity line as the single source of truth", () => {
@@ -16,6 +16,12 @@ describe("broker legal identity", () => {
     );
     expect(site.equalHousingOpportunity).toBe("Equal Housing Opportunity");
     expect(site.phoneDisplay).toBe("619-618-1419");
+  });
+
+  it("points HighLevel resize at the official msgsndr script only", () => {
+    expect(GHL_FORM_EMBED_SCRIPT).toBe(
+      "https://link.msgsndr.com/js/form_embed.js",
+    );
   });
 
   it("renders the business address in the footer company cluster, not /privacy", () => {

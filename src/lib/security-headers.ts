@@ -1,8 +1,11 @@
 /**
  * Static security headers for next.config.
  * HighLevel booking/form iframes load from api.leadconnectorhq.com — do not
- * omit that origin from frame-src. frame-ancestors blocks others from
- * framing *this* site; it does not restrict our embeds.
+ * omit that origin from frame-src. The official resize script is
+ * https://link.msgsndr.com/js/form_embed.js (script-src only; it talks to
+ * the iframe via postMessage, so connect-src does not need msgsndr).
+ * frame-ancestors blocks others from framing *this* site; it does not
+ * restrict our embeds.
  */
 
 const isDev = process.env.NODE_ENV !== "production";
@@ -12,6 +15,7 @@ const scriptSrc = [
   "'unsafe-inline'",
   "blob:",
   "https://va.vercel-scripts.com",
+  "https://link.msgsndr.com",
   ...(isDev ? ["'unsafe-eval'"] : []),
 ].join(" ");
 

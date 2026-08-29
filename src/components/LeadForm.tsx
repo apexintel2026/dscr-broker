@@ -1,5 +1,5 @@
-import { site } from "@/lib/site";
 import { EmbedFrame } from "@/components/EmbedFrame";
+import { GHL_FORM_EMBED_HEIGHT, site } from "@/lib/site";
 
 export function LeadForm({
   title = "Send the deal to the desk",
@@ -10,7 +10,8 @@ export function LeadForm({
     <EmbedFrame
       src={site.formWidgetUrl}
       title={title}
-      className="h-[min(90vh,820px)] min-h-[620px]"
+      kind="form"
+      initialHeight={GHL_FORM_EMBED_HEIGHT}
     />
   );
 }

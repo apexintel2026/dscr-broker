@@ -4,6 +4,13 @@ export const DEFAULT_GHL_BOOKING_URL =
 export const DEFAULT_GHL_FORM_URL =
   "https://api.leadconnectorhq.com/widget/form/F8FDVqy3kaUeK4M4KKYZ";
 
+/** Official HighLevel embed resize script. Parent page only — keep CSP tight. */
+export const GHL_FORM_EMBED_SCRIPT = "https://link.msgsndr.com/js/form_embed.js";
+
+/** Initial iframe heights: tall enough for the live widgets, then auto-resize. */
+export const GHL_FORM_EMBED_HEIGHT = 940;
+export const GHL_BOOKING_EMBED_HEIGHT = 1000;
+
 export const site = {
   name: "dscr.broker",
   tagline: "Qualify the deal. Book the call.",

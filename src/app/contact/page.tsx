@@ -1,3 +1,4 @@
+import { EmbedPanel } from "@/components/EmbedPanel";
 import { LeadForm } from "@/components/LeadForm";
 import { PageHero } from "@/components/PageHero";
 import { Button } from "@/components/ui/Button";
@@ -22,19 +23,14 @@ export default function ContactPage() {
         description="Send the deal. We will reach out. This is a desk note, not a credit decision. We are a broker, not a lender."
       />
       <Container className="grid gap-6 py-12 lg:grid-cols-12">
-        <Card
+        <EmbedPanel
           id="form"
-          elevated
-          className="scroll-mt-28 overflow-hidden lg:col-span-7"
+          className="scroll-mt-28 lg:col-span-7"
+          title="Send a note"
+          description="Hosted by HighLevel. Submit there — we will reach out."
         >
-          <div className="border-b border-border px-6 py-4">
-            <h2 className="font-medium text-ink">Send a note</h2>
-            <p className="mt-1 text-sm text-muted">
-              Hosted by HighLevel. Submit there — we will reach out.
-            </p>
-          </div>
           <LeadForm title="Contact the dscr.broker desk" />
-        </Card>
+        </EmbedPanel>
         <Card className="space-y-4 p-6 lg:col-span-5">
           <div>
             <h2 className="text-xs uppercase tracking-wider text-muted">Email</h2>

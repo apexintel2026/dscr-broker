@@ -38,6 +38,19 @@ body {
   outline-offset: 2px;
 }
 
+/*
+ * form_embed.js hides matching iframes (opacity/visibility/off-screen)
+ * until iframeLoaded. Keep conversion widgets painted so a Cloudflare
+ * challenge inside the iframe is not a blank card.
+ */
+iframe.ghl-embed-frame {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  position: relative !important;
+  left: auto !important;
+}
+
 .skip-link {
   position: absolute;
   left: 1rem;
