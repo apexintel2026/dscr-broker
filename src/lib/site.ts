@@ -13,8 +13,13 @@ export const GHL_BOOKING_EMBED_HEIGHT = 1000;
 
 export const site = {
   name: "dscr.broker",
-  tagline: "Qualify the deal. Book the call.",
-  navSubtitle: "The investor loan desk.",
+  tagline: "the future of Money",
+  navSubtitle: "the future of Money",
+  logo: {
+    src: "/gir-logo.png",
+    width: 384,
+    height: 384,
+  },
   description:
     "DSCR and business-purpose investor loans, brokered — not funded in-house. Qualify the deal, then book a 30-minute strategy call.",
   url: "https://dscr.broker",

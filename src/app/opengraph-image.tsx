@@ -23,7 +23,6 @@ export default function OpenGraphImage() {
       >
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
           <div style={{ fontSize: 28, color: "#9AA6B2" }}>{site.name}</div>
-          <div style={{ fontSize: 22, color: "#3DDC97" }}>{site.navSubtitle}</div>
         </div>
         <div
           style={{

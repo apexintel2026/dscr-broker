@@ -19,7 +19,6 @@ export function Footer() {
       <Container className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4">
         <div className="space-y-3">
           <p className="font-medium text-ink">{site.name}</p>
-          <p className="text-sm text-muted">{site.navSubtitle}</p>
           <p className="text-sm text-muted">{site.tagline}</p>
           <PhoneLinks size="md" />
           <p className="text-xs text-muted">
