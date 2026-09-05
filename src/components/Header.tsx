@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
@@ -17,14 +18,19 @@ export function Header() {
       <Container className="flex h-16 items-center justify-between gap-4">
         <Link
           href="/"
-          className="min-w-0 shrink"
+          className="flex min-w-0 shrink items-center gap-2.5 sm:gap-3"
           aria-label={`${site.name} home`}
         >
-          <span className="block truncate font-medium tracking-tight text-ink">
-            {site.name}
-          </span>
-          <span className="block truncate text-xs text-muted">
-            {site.navSubtitle}
+          <Image
+            src={site.logo.src}
+            alt=""
+            width={site.logo.width}
+            height={site.logo.height}
+            priority
+            className="h-10 w-10 shrink-0 sm:h-12 sm:w-12"
+          />
+          <span className="min-w-0 truncate text-xs tracking-tight text-muted sm:text-sm">
+            {site.tagline}
           </span>
         </Link>
 
