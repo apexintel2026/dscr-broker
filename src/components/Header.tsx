@@ -15,10 +15,10 @@ export function Header() {
           <PhoneLinks className="justify-center whitespace-nowrap" />
         </Container>
       </div>
-      <Container className="flex h-16 items-center justify-between gap-4">
+      <Container className="flex h-20 items-center justify-between gap-4">
         <Link
           href="/"
-          className="flex min-w-0 shrink items-center gap-2.5 sm:gap-3"
+          className="flex min-w-0 shrink items-center gap-3 sm:gap-3.5"
           aria-label={`${site.name} home`}
         >
           <Image
@@ -27,10 +27,20 @@ export function Header() {
             width={site.logo.width}
             height={site.logo.height}
             priority
-            className="h-10 w-10 shrink-0 sm:h-12 sm:w-12"
+            className="h-12 w-12 shrink-0 sm:h-14 sm:w-14"
           />
-          <span className="min-w-0 truncate text-xs tracking-tight text-muted sm:text-sm">
-            {site.tagline}
+          <span className="min-w-0 leading-snug">
+            <span className="hidden truncate text-base tracking-tight text-ink sm:inline">
+              {site.headerLockup}
+            </span>
+            <span className="block sm:hidden">
+              <span className="block truncate text-sm font-medium text-ink">
+                GI Realty
+              </span>
+              <span className="block truncate text-xs text-muted">
+                {site.tagline}
+              </span>
+            </span>
           </span>
         </Link>
 

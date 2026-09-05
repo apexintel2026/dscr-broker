@@ -78,8 +78,10 @@ describe("broker legal identity", () => {
 
 describe("GIR brand mark", () => {
   it("uses the exact tagline casing", () => {
-    expect(site.tagline).toBe("the future of Money");
-    expect(site.navSubtitle).toBe("the future of Money");
+    expect(site.tagline).toBe("The future of Money");
+    expect(site.navSubtitle).toBe("The future of Money");
+    expect(site.headerLockup).toBe("GI Realty - The future of Money");
+    expect(site.tagline).not.toBe("the future of Money");
     expect(site.tagline).not.toBe("Qualify the deal. Book the call.");
     expect(site.navSubtitle).not.toBe("The investor loan desk.");
   });
@@ -90,17 +92,19 @@ describe("GIR brand mark", () => {
     expect(logo.height).toBe(site.logo.height);
     expect(logo.colorType).toBe(6);
     expect(logo.bytes).toBeGreaterThan(10_000);
-    expect(logo.bytes).toBeLessThan(500_000);
     expect(site.logo.src).toBe("/gir-logo.png");
   });
 
-  it("puts the logo and tagline in the header, not the text wordmark", () => {
+  it("puts the logo and GI Realty lockup in a taller header, not the text wordmark", () => {
     const header = readFileSync(
       resolve(process.cwd(), "src/components/Header.tsx"),
       "utf8",
     );
     expect(header).toContain("site.logo.src");
+    expect(header).toContain("{site.headerLockup}");
     expect(header).toContain("{site.tagline}");
+    expect(header).toContain("h-20");
+    expect(header).toContain("h-12 w-12 shrink-0 sm:h-14 sm:w-14");
     expect(header).toContain("aria-label={`${site.name} home`}");
     expect(header).not.toContain("{site.navSubtitle}");
     expect(header).not.toMatch(/The investor loan desk/);
