@@ -13,8 +13,10 @@ export const GHL_BOOKING_EMBED_HEIGHT = 1000;
 
 export const site = {
   name: "dscr.broker",
-  tagline: "the future of Money",
-  navSubtitle: "the future of Money",
+  tagline: "The future of Money",
+  navSubtitle: "The future of Money",
+  /** Header lockup beside the GIR mark. Not the legal footer name. */
+  headerLockup: "GI Realty - The future of Money",
   logo: {
     src: "/gir-logo.png",
     width: 384,
